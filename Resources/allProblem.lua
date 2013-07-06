@@ -57,8 +57,6 @@ content[1]=
 ### Hint
 EX = sum{ Xi } / n
 DX = E(X - E(X))
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[2]=
 [[
@@ -85,8 +83,6 @@ content[2]=
     3 carry operations.
     1 carry operation.
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[3]=
 [[
@@ -147,8 +143,6 @@ oseph站在什么位置才能使他最后出列呢？
     6	X	X		X
     	X	X	7	X
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[4]=
 [[
@@ -202,8 +196,6 @@ I’m coming!” (不含引号)，否则，输出一个整数表示大雄(们)�
     
 ### Hint
 大雄还不会线性代数，还不知道可以用解方程(组)的方法确定题目的答案。
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[5]=
 [[
@@ -270,8 +262,6 @@ int main()
 //你的程序
 return 0;
 }
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[8]=
 [[
@@ -535,8 +525,6 @@ content[17]=
     3 * 3 * 3 = 27 -> 7
     4 * 4 * 4 * 4 = 16 -> 6
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[18]=
 [[
@@ -559,8 +547,6 @@ content[18]=
 1 2 3
 ### hint
 huge input and output, scanf & printf recommanded.
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[19]=
 [[
@@ -614,8 +600,6 @@ content[19]=
     0
     3
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[20]=
 [[
@@ -637,8 +621,6 @@ content[20]=
     
     1.000
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[21]=
 [[
@@ -662,8 +644,6 @@ content[21]=
     1
     569
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[22]=
 [[
@@ -693,8 +673,6 @@ content[22]=
     
 ### hint
 huge input and output, scanf & printf recommanded.
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[23]=
 [[
@@ -732,8 +710,6 @@ fibnacci数是一种数学上很常见的数列，它的可以这么求：
     
 ### hint
 O(2 ^ n)的算法会超时
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[24]=
 [[
@@ -761,8 +737,6 @@ TT上楼梯，时而上一级，时而上两级，如果楼梯总共有n级，TT
     
 ### hint
 O(n)的算法会超时
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[25]=
 [[
@@ -796,8 +770,6 @@ content[25]=
     0.00000
     100.00000
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[26]=
 [[
@@ -839,8 +811,6 @@ j <= n)装配站所花的时间为Aij. 从第i个条流水线的第j个装配站
     8
     4
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[27]=
 [[
@@ -900,8 +870,6 @@ n 操作
     
     1
     20
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[29]=
 [[
@@ -928,8 +896,6 @@ content[29]=
     
     335
     48
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[30]=
 [[
@@ -954,8 +920,6 @@ content[30]=
     
     Good bye!
     Please wait for a moment!
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[31]=
 [[
@@ -990,8 +954,6 @@ content[31]=
     63
     2.00
     1
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[32]=
 [[
@@ -1023,8 +985,6 @@ content[32]=
     0
     7
     3
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[33]=
 [[
@@ -1122,8 +1082,6 @@ content[34]=
     0
     2
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[35]=
 [[
@@ -1172,8 +1130,6 @@ of operations to accomplish the task.
     4500
     0
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[36]=
 [[
@@ -1267,8 +1223,6 @@ For each test case, output a line containing the answer.
     0
     7
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[38]=
 [[
@@ -1297,8 +1251,6 @@ content[38]=
     1
     1
     2
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[39]=
 [[
@@ -1390,8 +1342,6 @@ content[41]=
     2
     4
     9
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[42]=
 [[
@@ -1495,8 +1445,6 @@ content[44]=
     
 ### 来源
 第七届北航程序设计大赛网络预赛 - lzx
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[45]=
 [[
@@ -1545,8 +1493,6 @@ wi,i+j <= 1000000）。
     
 ### 来源
 第七届北航程序设计大赛现场决赛 - lzx
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[46]=
 [[
@@ -1575,8 +1521,6 @@ content[46]=
     
 ### 来源
 第七届北航程序设计大赛现场决赛 - lzx
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[47]=
 [[
@@ -1614,8 +1558,6 @@ content[47]=
 精度是个大问题啊……
 ### 来源
 第七届北航程序设计大赛现场决赛 - gg
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[48]=
 [[
@@ -1666,8 +1608,6 @@ ACM 竞赛的计分规则如下：
     
 ### 来源
 第七届北航程序设计大赛网络预赛 - gg
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[49]=
 [[
@@ -1754,8 +1694,6 @@ DS最近很囧，总是不能把妹子哄开心。。。所以，邪恶的他也
     
 ### 来源
 第七届北航程序设计大赛现场决赛 - KissBuaa.Ds && KissBuaa.Anran
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[50]=
 [[
@@ -1793,8 +1731,6 @@ content[50]=
     
 ### 来源
 第七届北航程序设计大赛网络预赛 - KissBuaa.DS
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[51]=
 [[
@@ -1898,8 +1834,6 @@ MM 每次询问从第 a 个到第 b 个金库中金币最少的那个金库有�
     
 ### 来源
 第七届北航程序设计大赛网络预赛 - mm
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[53]=
 [[
@@ -1951,8 +1885,6 @@ Bella 向下移动两格（一格亦可）把棋子移出方格。被选中的�
 ![<img:/richtext/res/24/Barty2.PNG>](/richtext/res/24/Barty2.PNG)
 ### 来源
 第七届北航程序设计大赛网络预赛 - wht
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[54]=
 [[
@@ -2023,8 +1955,6 @@ j+2) 或 (i+2, j+1) 或 (i+k, j+k), k > 0），请问有多少种到达方式？
     
 ### 来源
 第七届北航程序设计大赛现场决赛 - wht
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[56]=
 [[
@@ -2065,8 +1995,6 @@ content[56]=
 所以第三组样例还是需要测一次的。
 ### 来源
 第七届北航程序设计大赛现场决赛 - gg
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[57]=
 [[
@@ -2098,8 +2026,6 @@ content[57]=
     
 ### 来源
 第七届北航程序设计大赛网络预赛 - gg
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[58]=
 [[
@@ -2128,8 +2054,6 @@ content[58]=
     
     6 8 10 12
     3
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[59]=
 [[
@@ -2180,8 +2104,6 @@ content[60]=
     
     0
     3
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[61]=
 [[
@@ -2206,8 +2128,6 @@ Courage很喜欢玩游戏王，很喜欢收集游戏王卡片，每张卡片都�
     
     2
     5
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[62]=
 [[
@@ -2234,8 +2154,6 @@ content[62]=
     
     -2 -1 1 2 3
     1 -1 -2 2 3
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[63]=
 [[
@@ -2263,8 +2181,6 @@ GG很喜欢看喜羊羊与灰太狼，他有很多喜羊羊与灰太狼的录像
     
     1 3 5
     2
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[64]=
 [[
@@ -2310,8 +2226,6 @@ cnt++;
     
 ### 来源
 第七届北航程序设计大赛现场决赛 - mm
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[65]=
 [[
@@ -2363,8 +2277,6 @@ content[65]=
     
 ### 来源
 第七届北航程序设计大赛网络预赛 - KissBuaa.DS
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[66]=
 [[
@@ -2579,8 +2491,6 @@ content[69]=
 ### hint
 如果给出能拿到物品的最大价值，可以得到50%的分数
 如果还给出一组可行的选择方案，可以得到100%的分数
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[70]=
 [[
@@ -2689,8 +2599,6 @@ x=3 邪恶的DS把盒子和球球都染成了一个颜色！
     对于 70% 的数据 0<n,m≤500
     对于 100% 的数据 0<n,m≤1000
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[73]=
 [[
@@ -2714,8 +2622,6 @@ content[73]=
     
     1 2 3 4 5
     1 2 3
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[74]=
 [[
@@ -2759,8 +2665,6 @@ X的字典序小于Y，存在一个i<k使得, X[0..i-1] = Y[0..i-1] 且 X[i] < Y
     two
     up
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[75]=
 [[
@@ -2947,8 +2851,6 @@ content[79]=
     
 ### 来源
 第四届北航程序设计大赛网络预赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[80]=
 [[
@@ -2983,8 +2885,6 @@ content[80]=
 第二组数据，最小的总等待时间的最小值为1+(1+2)+(1+2+4)+3+(3+5)=22。
 ### 来源
 第四届北航程序设计大赛网络预赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[81]=
 [[
@@ -3020,8 +2920,6 @@ content[81]=
     
 ### 来源
 第四届北航程序设计大赛网络预赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[82]=
 [[
@@ -3111,8 +3009,6 @@ n）表示编号为a和b的两题是相似的。如果a与b相似且b与c相似�
 第二组数据选的是第4和第5题，虽然时间有多，但是其他的都是直接或间接的相似题，练习了也不能让价值更大。
 ### 来源
 第四届北航程序设计大赛网络预赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[84]=
 [[
@@ -3196,8 +3092,6 @@ Tb,1)且child(Ta,2)=child(Tb,2)且......且child(Ta,x)=child(Tb,x)，则说Ta=Tb
     
 ### 来源
 第四届北航程序设计大赛网络预赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[86]=
 [[
@@ -3247,8 +3141,6 @@ T(B))=sum{w(Ai, Bj), i=1~x, j=1~y}；
 我方选择的是1 2 3 5 6号英雄，这时对方的最好选择是4 7 8 9 10号英雄。
 ### 来源
 第四届北航程序设计大赛网络预赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[87]=
 [[
@@ -3293,8 +3185,6 @@ content[87]=
     
 ### 来源
 第四届北航程序设计大赛现场决赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[88]=
 [[
@@ -3356,8 +3246,6 @@ tring}分别为待搜索的模式串和所要替换成的替换串；'/'用来�
     
 ### 来源
 第四届北航程序设计大赛现场决赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[89]=
 [[
@@ -3393,8 +3281,6 @@ verbal，还得多背单词），所以强烈建议只在少数旅游点停车�
     
 ### 来源
 第四届北航程序设计大赛现场决赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[90]=
 [[
@@ -3448,8 +3334,6 @@ content[90]=
     
 ### 来源
 第四届北航程序设计大赛现场决赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[91]=
 [[
@@ -3494,8 +3378,6 @@ Core）。必要时，T'可以退化为某个结点。一般来说，在上述�
     
 ### 来源
 第四届北航程序设计大赛现场决赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[92]=
 [[
@@ -3534,8 +3416,6 @@ content[92]=
 第一组数据，前两天和后两天背单词，第三天娱乐；第二组数据，三天都背单词。
 ### 来源
 第四届北航程序设计大赛现场决赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[93]=
 [[
@@ -3568,8 +3448,6 @@ content[93]=
 3-4i = (2-i)*(2-i)
 ### 来源
 第四届北航程序设计大赛现场决赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[94]=
 [[
@@ -3609,8 +3487,6 @@ content[94]=
     
 ### 来源
 第四届北航程序设计大赛现场决赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[95]=
 [[
@@ -3647,8 +3523,6 @@ content[95]=
     
 ### 来源
 第五届北航程序设计大赛网络预赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[96]=
 [[
@@ -3696,8 +3570,6 @@ BUAA 。
     
 ### 来源
 第五届北航程序设计大赛网络预赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[97]=
 [[
@@ -3764,8 +3636,6 @@ a 和 b 均为盒子编号，此命令作用是把 a 及 a 上面的所有盒子
     
 ### 来源
 第五届北航程序设计大赛网络预赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[98]=
 [[
@@ -3811,8 +3681,6 @@ k 大的是哪个。
     
 ### 来源
 第五届北航程序设计大赛网络预赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[99]=
 [[
@@ -3857,8 +3725,6 @@ k），表示要串门的这个居民所对应的子串的起始位置在 a ，�
     
 ### 来源
 第五届北航程序设计大赛网络预赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[100]=
 [[
@@ -3910,8 +3776,6 @@ content[100]=
     
 ### 来源
 第五届北航程序设计大赛网络预赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[101]=
 [[
@@ -3963,8 +3827,6 @@ content[101]=
     
 ### 来源
 第五届北航程序设计大赛网络预赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[102]=
 [[
@@ -4015,8 +3877,6 @@ content[102]=
     
 ### 来源
 第五届北航程序设计大赛网络预赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[103]=
 [[
@@ -4057,8 +3917,6 @@ f(e1)、f(e2)、...、f(en)。
     
 ### 来源
 第五届北航程序设计大赛网络预赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[104]=
 [[
@@ -4107,8 +3965,6 @@ Jimmy 决定如果邀请了一个朋友来，那么就不邀请他的直接 lead
     
 ### 来源
 第五届北航程序设计大赛网络预赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[105]=
 [[
@@ -4165,8 +4021,6 @@ content[105]=
     
 ### 来源
 第五届北航程序设计大赛现场决赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[106]=
 [[
@@ -4201,8 +4055,6 @@ content[106]=
     
 ### 来源
 第五届北航程序设计大赛现场决赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[107]=
 [[
@@ -4239,8 +4091,6 @@ lzx
     
 ### 来源
 第五届北航程序设计大赛现场决赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[108]=
 [[
@@ -4314,8 +4164,6 @@ content[108]=
     
 ### 来源
 第五届北航程序设计大赛现场决赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[109]=
 [[
@@ -4356,8 +4204,6 @@ N 级的等级炮可以有 N 个不同的质数作为幸运数，它们分别为
 对于第二组数据，等级数为 1、2、4、7、8 时都会承受加成伤害。
 ### 来源
 第五届北航程序设计大赛现场决赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[110]=
 [[
@@ -4442,8 +4288,6 @@ content[110]=
     
 ### 来源
 第五届北航程序设计大赛现场决赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[111]=
 [[
@@ -4499,8 +4343,6 @@ content[111]=
 注意：第四组数据是为了说明黑色盒子效果的（两个盒子都打开），实际数据中保证黑色盒子在所有盒子中的比率总是小于等于百分之一。
 ### 来源
 第五届北航程序设计大赛现场决赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[112]=
 [[
@@ -4540,8 +4382,6 @@ Sb，则作为先手，他总是希望 Sa - Sb 尽可能大，而后手则是希
     
 ### 来源
 第五届北航程序设计大赛现场决赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[113]=
 [[
@@ -4581,8 +4421,6 @@ lzx小时候不喜欢吃苹果，但是他喜欢扔苹果，他发现每当他�
     
 ### 来源
 第六届北航程序设计大赛网络预赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[114]=
 [[
@@ -4616,8 +4454,6 @@ barty的家是一个边长为1的正方体，他在天花板的中心安装了�
     
 ### 来源
 第六届北航程序设计大赛网络预赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[115]=
 [[
@@ -4660,8 +4496,6 @@ q<=20），表示需要计算的群聊次数。紧跟着q行，每行第一个�
     
 ### 来源
 第六届北航程序设计大赛网络预赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[116]=
 [[
@@ -4689,8 +4523,6 @@ content[116]=
     
 ### 来源
 第六届北航程序设计大赛网络预赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[117]=
 [[
@@ -4719,8 +4551,6 @@ content[117]=
     
 ### 来源
 第六届北航程序设计大赛网络预赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[118]=
 [[
@@ -4757,8 +4587,6 @@ lzx的女朋友做什么都非常认真，如果输掉任何一局游戏都会�
     
 ### 来源
 第六届北航程序设计大赛网络预赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[119]=
 [[
@@ -4795,8 +4623,6 @@ content[119]=
 联立上面2式可得：vi2 = vj1 和 vj2 = vi1
 ### 来源
 第六届北航程序设计大赛网络预赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[120]=
 [[
@@ -4843,8 +4669,6 @@ bc|d|e)是非法的，但(a*b(c|d|e))是合法的，其结果为bedca。
     
 ### 来源
 第六届北航程序设计大赛网络预赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[121]=
 [[
@@ -4879,8 +4703,6 @@ content[121]=
     
 ### 来源
 第六届北航程序设计大赛网络预赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[122]=
 [[
@@ -4911,8 +4733,6 @@ Wi（1<=Wi<=C)。
     
 ### 来源
 第六届北航程序设计大赛网络预赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[123]=
 [[
@@ -4940,8 +4760,6 @@ gg最近想给女友送两个精美的小礼品：两个底面半径分别为R1�
     
 ### 来源
 第六届北航程序设计大赛现场决赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[124]=
 [[
@@ -4977,8 +4795,6 @@ barty后宫三千，但是正宫只有一个。他的正宫为了他能好好学
     
 ### 来源
 第六届北航程序设计大赛现场决赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[125]=
 [[
@@ -5009,8 +4825,6 @@ content[125]=
     
 ### 来源
 第六届北航程序设计大赛现场决赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[126]=
 [[
@@ -5045,8 +4859,6 @@ Xi，Yi（以原始木板的左下角为原点(0，0))，0<Xi<A，0<Yi<B。保�
     
 ### 来源
 第六届北航程序设计大赛现场决赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[127]=
 [[
@@ -5112,8 +4924,6 @@ content[127]=
     
 ### 来源
 第六届北航程序设计大赛现场决赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[128]=
 [[
@@ -5160,8 +4970,6 @@ content[128]=
     
 ### 来源
 第六届北航程序设计大赛现场决赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[129]=
 [[
@@ -5201,8 +5009,6 @@ lzx决定带一些后宫出游，至于带多少后宫那就随便啦，他要�
     
 ### 来源
 第六届北航程序设计大赛现场决赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[130]=
 [[
@@ -5234,8 +5040,6 @@ pg)
     
 ### 来源
 第六届北航程序设计大赛现场决赛
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[131]=
 [[
@@ -5310,8 +5114,6 @@ the friend who gave a gift to friend number i.
 4 1 2 3
 1 3 2
 1 2
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[134]=
 [[
@@ -5333,8 +5135,6 @@ number in decimal notation.
 14
 1000000001
 0
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[135]=
 [[
@@ -5359,8 +5159,6 @@ element after one replacement and the sorting are performed.
 1 1 2 3 4
 1 2 3 4 5
 1 2 2
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[136]=
 [[
@@ -5392,8 +5190,6 @@ content[136]=
     8 15 20 22 23
     9 16 21 24 25
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[137]=
 [[
@@ -5421,8 +5217,6 @@ content[137]=
     
     4
     1
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[138]=
 [[
@@ -5477,8 +5271,6 @@ content[139]=
     YES
     YES
     NO
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[140]=
 [[
@@ -5506,8 +5298,6 @@ opq sopqtrremn即取代第二位的k并变成opq这个字符串。 如果字串�
     
     Sorry,request denied.
     ssstfa
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[141]=
 [[
@@ -5537,8 +5327,6 @@ content[141]=
     
 ### Hint
 "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[142]=
 [[
@@ -5569,8 +5357,6 @@ content[142]=
     
 ### Hint
 "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[143]=
 [[
@@ -5602,8 +5388,6 @@ content[143]=
     60
     15.00
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[144]=
 [[
@@ -5639,8 +5423,6 @@ C++学习已经达到了较好的学习效果。
     14 23 22 21 8
     13 12 11 10 9
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[145]=
 [[
@@ -5666,8 +5448,6 @@ content[145]=
     
     YES
     NO
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[146]=
 [[
@@ -5694,8 +5474,6 @@ content[146]=
     
 ### Hint
 10000以内的质数已超过1000个
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[147]=
 [[
@@ -5722,8 +5500,6 @@ content[147]=
     
 ### Hint
 如果你没有学过复数，那么可以把复数A=a+bi看成多项式A=a+bx 按多项式运算法则运算即可，唯一需要注意的是i2=-1的替换
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[148]=
 [[
@@ -5821,8 +5597,6 @@ content[150]=
     -2
     1
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[151]=
 [[
@@ -5852,8 +5626,6 @@ hus不想死，他还年轻，还有很多事情要做。于是他打算做最�
     4
 ### Warning
 请用链表实现，我们会检查代码。
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[152]=
 [[
@@ -5894,8 +5666,6 @@ void DestroyList(..)
 ...
 int main()
 {...在主函数中直接调用以上函数...}
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[153]=
 [[
@@ -6259,8 +6029,6 @@ content[163]=
 使用两个指针p1,p2进行遍历,p1每次行进1步，p2每次行进2步。当p2到达链表结尾的时候，p1指向的就是链表的中点。（仅仅是提示，具体实现的细节还请大家
 自己掌握。）
 老规矩，请用链表实现。
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[164]=
 [[
@@ -6291,8 +6059,6 @@ content[164]=
 ### Warning
 请用栈实现。
 PS：出原题的目的就是为了督促大家，上机不会的题下课后多练习一下，不要上完机就扔了。
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[165]=
 [[
@@ -6326,8 +6092,6 @@ content[165]=
     
 ### Warning
 请用串实现。
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[166]=
 [[
@@ -6362,8 +6126,6 @@ content[166]=
 ### Note
 出自:编程啦数据结构课程练习板块
 本题数据较弱。
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[167]=
 [[
@@ -6394,8 +6156,6 @@ content[167]=
     iq, what a bag luck!
     do you know what is banana?
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[168]=
 [[
@@ -6488,8 +6248,6 @@ content[170]=
     Yes
     No
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[171]=
 [[
@@ -6523,8 +6281,6 @@ BusyJay本来想把上次练习的最后一道题加大数据强度后放进来�
     
 ### Tips
 数据量很大，慎之。
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[172]=
 [[
@@ -6718,8 +6474,6 @@ T组测试数据。每组测试数据为字符串A，A的长度不超过100。
     3
     3
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[178]=
 [[
@@ -6743,8 +6497,6 @@ content[178]=
     3
     2
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[179]=
 [[
@@ -6773,8 +6525,6 @@ content[179]=
     BDA
     ABD
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[180]=
 [[
@@ -6798,8 +6548,6 @@ content[180]=
     10
     1
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[181]=
 [[
@@ -6848,8 +6596,6 @@ BusyJay最近在写一个爬网机器人。但是他遇到了一个难题，就�
         E
         F
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[182]=
 [[
@@ -6963,8 +6709,6 @@ E6%91%A9%E6%96%AF%E7%A0%81.jpg)
     
     董适原创
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[185]=
 [[
@@ -7000,8 +6744,6 @@ M<=10^6），代表数组的前两个数据。
     
     袁雅辉原创
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[186]=
 [[
@@ -7037,8 +6779,6 @@ BUAA-SCSE 新家族又要迎来新的同学了。这次的妹子颇多，足足�
     
     董适改编自哈尔滨工程大学训练赛
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[187]=
 [[
@@ -7077,8 +6817,6 @@ T行，每行一个整数，代表草席摆放的方案数
     
     董适改编自poj
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[188]=
 [[
@@ -7127,8 +6865,6 @@ Frank的姐姐是一个娇生惯养、不事编程的女生，于是每当遇到
     
     bdca
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[190]=
 [[
@@ -7204,8 +6940,6 @@ Output the maximum of X
     
     董适给中国科学技术大学月赛出的题目
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[192]=
 [[
@@ -7274,8 +7008,6 @@ T行，每行一个整数，代表草席摆放的方案数对100000007的余数
     
     董适改编自poj
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[194]=
 [[
@@ -7433,8 +7165,6 @@ content[197]=
     1
     4
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[198]=
 [[
@@ -7490,8 +7220,6 @@ content[199]=
     
 ### Tips
 如果有人不知道题目什么意思，请翻看课本。
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[200]=
 [[
@@ -7569,8 +7297,6 @@ content[202]=
     12
     20
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[203]=
 [[
@@ -7599,8 +7325,6 @@ content[203]=
     
     2 2
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[204]=
 [[
@@ -7639,8 +7363,6 @@ content[204]=
     
     0 2 1
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[205]=
 [[
@@ -7673,8 +7395,6 @@ content[205]=
     
     0
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[206]=
 [[
@@ -7705,8 +7425,6 @@ content[206]=
     4
     -1
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[207]=
 [[
@@ -7786,8 +7504,6 @@ content[209]=
     
     1 2 3
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[210]=
 [[
@@ -7811,8 +7527,6 @@ content[210]=
     
 ### Hint
 估计快排过不了。
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[211]=
 [[
@@ -7836,8 +7550,6 @@ content[211]=
     
     0 2 1
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[212]=
 [[
@@ -7902,8 +7614,6 @@ Exist.”。当n存在多组连续正整数序列时，按照第一个元素从�
     32 33 34
     49 50
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[214]=
 [[
@@ -7933,8 +7643,6 @@ content[214]=
     
 ### Hint
 这是非联通图。
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[215]=
 [[
@@ -8019,8 +7727,6 @@ content[217]=
     5 10
     
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[218]=
 [[
@@ -8069,8 +7775,6 @@ inaimg.cn/bmiddle/5c707194jw1dxyh7fejx9j.jpg)
     
     所以答案为2
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[219]=
 [[
@@ -8153,8 +7857,6 @@ content[221]=
     29
     
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[222]=
 [[
@@ -8192,8 +7894,6 @@ inaimg.cn/bmiddle/5c707194jw1dxyhyyrp67j.jpg)
       *
     
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[223]=
 [[
@@ -8221,8 +7921,6 @@ content[223]=
     Sat
     
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[224]=
 [[
@@ -8335,8 +8033,6 @@ content[227]=
     
     1
     1 1
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[228]=
 [[
@@ -8374,8 +8070,6 @@ Courage和基友们打的麻将比较简单，以下三种牌各有4张：
     1 9m
     Nooten
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[229]=
 [[
@@ -8408,8 +8102,6 @@ Jason手上有n个不同系列的牌组，每个牌组i有num[i]张卡牌.Jason�
     9
     1
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[230]=
 [[
@@ -8500,8 +8192,6 @@ Ryan又是个很没有时间观念的人，他很想知道自己哪天打渔，�
     
     Ryan的工作从今天开始，即他会在2012年11月1日开始他“三天打渔，两天晒网”的第一天打渔。
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[233]=
 [[
@@ -8617,8 +8307,6 @@ j <= n)装配站所花的时间为Aij。从第i个条流水线的第j个装配�
     4
     11
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[236]=
 [[
@@ -8656,8 +8344,6 @@ A(BC) = (30*5*60)+(10*30*60) = 9000+18000 = 27000次运算，
     4500
     ((A1A2)A3)
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[237]=
 [[
@@ -8734,8 +8420,6 @@ content[238]=
     4
     11
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[239]=
 [[
@@ -8970,8 +8654,6 @@ n个人排队打水，每个人需要时间为ti，那么第k个人等待的时�
     
     
     50
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[246]=
 [[
@@ -9001,8 +8683,6 @@ content[246]=
     
     
     5.67
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[247]=
 [[
@@ -9029,8 +8709,6 @@ Lily和朋友们住在n个不同的地方，恰好有一列火车经过他们所
 ### Sample Output:
     
     33
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[248]=
 [[
@@ -9221,8 +8899,6 @@ content[252]=
     Case #3: 0
     null
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[253]=
 [[
@@ -9290,8 +8966,6 @@ content[254]=
     
 ## Source
 2012 ACM-ICPC Asia Chengdu Regional Contest
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[255]=
 [[
@@ -9809,8 +9483,6 @@ It's a wonderful land! \^o^/
 # Hint
 参考 人民教育出版社 普通高中课程标准实验教科书 数学 必修5第三章的“二元一次不等式(组)与简单的线性规划问题”
 注意：若领土面积为0，则视为没有领土。
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[269]=
 [[
@@ -9905,8 +9577,6 @@ PPS:其实是他很爱吃胡萝卜我会到处乱说嘛~~~
 ### Hint
 概率为 0 的事件未必是不可能事件，比如说在数轴上随机选点，结果选中了一个整点……
 所以第三组样例还是需要测一次的。
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[272]=
 [[
@@ -10100,8 +9770,6 @@ content[276]=
     92
     
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[277]=
 [[
@@ -10843,8 +10511,6 @@ Exceeded！！！OMG。。你能帮助董适解决他妹子的问题么？
 请用scanf读入printf输出，或者IO加速读入输出。cin,cout会超时。
 # Source
 BUAA_Dshawn
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[290]=
 [[
@@ -10874,8 +10540,6 @@ content[290]=
     
 # Source
 BUAA_GG
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[291]=
 [[
@@ -10908,8 +10572,6 @@ ggcd(A, B)
     
 # Source
 BUAA_GG
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[292]=
 [[
@@ -11174,8 +10836,6 @@ Courage在撒哈拉倒卖切糕渐渐有了点钱，交的税也越来越多。�
     I find him in position 24!
     He's not here.
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[299]=
 [[
@@ -11243,8 +10903,6 @@ ZMZ发现这游戏有点难玩，于是想借助字典。
     report
     deport
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[300]=
 [[
@@ -11278,8 +10936,6 @@ content[300]=
     8
     No
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[301]=
 [[
@@ -11304,8 +10960,6 @@ Jason有女友了(撒花，鼓掌，礼炮响！)。眼看女友马上就要生�
     
     YES
     NO
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[302]=
 [[
@@ -11449,8 +11103,6 @@ content[304]=
     
 # Source
 BUAA_Dshawn
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[305]=
 [[
@@ -11496,8 +11148,6 @@ y<=n，且x≠y)和rp(0<rp<30000)。表示教室x到教室y之间有一条双向
     
 # Source
 BUAA_LiJiancheng
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[306]=
 [[
@@ -11534,8 +11184,6 @@ Gielch needs at least 2 ATPs!”
     
 # Source
 BUAA_LiJiancheng
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[307]=
 [[
@@ -11687,8 +11335,6 @@ if>](/richtext/res/226/1.gif)
     
 # Source
 BUAA_Dshawn
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[310]=
 [[
@@ -11837,8 +11483,6 @@ ISBN码的首位数字表示书籍的出版语言，例如0代表英语；
     Right
     0-670-82162-4
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[314]=
 [[
@@ -11930,8 +11574,6 @@ content[315]=
 4、 2 2 1 有 2 个屌丝满意度；
 5、 3 2 1 有 3 个屌丝满意度；
 6、 3 3 1 有 2 个屌丝满意度。
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[316]=
 [[
@@ -12000,8 +11642,6 @@ a[j] 和 a[i] | a[I + 1] | … | a[j]）
 # Hint
 对于第一组数据，只有一个5
 第二组数据，1 , 2 , 1 & 2 = 0 , 1 | 2 = 3 . 去掉重复所以答案是4
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[318]=
 [[
@@ -12034,8 +11674,6 @@ content[318]=
     4
     3
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[319]=
 [[
@@ -12069,8 +11707,6 @@ content[319]=
     25.0000
     0.0000
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[320]=
 [[
@@ -12105,8 +11741,6 @@ content[320]=
     7
     31
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[321]=
 [[
@@ -12141,8 +11775,6 @@ content[321]=
     
     1
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[322]=
 [[
@@ -12181,8 +11813,6 @@ GCD：最大公约数
 # Hint
 对于第一组数据，只有1 1 一种情况
 对于第二组数据，1 2 和 2 1 两种情况
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[323]=
 [[
@@ -12258,8 +11888,6 @@ content[324]=
     -35.08 25.90
     52.18 164.47
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[325]=
 [[
@@ -12350,8 +11978,6 @@ Ninja Gielch已经把各种硬件设备配置好了，就差核心算法了。�
 4
 # Source
 BUAA_LiJiancheng
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[327]=
 [[
@@ -12547,8 +12173,6 @@ content[333]=
 abcdefg
 ## 输出样例
 gfedcba
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[334]=
 [[
@@ -12561,8 +12185,6 @@ content[334]=
 abccba
 ## 输出样例
 yes
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[335]=
 [[
@@ -12587,8 +12209,6 @@ c
 ## 输出样例
 c
 21
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[336]=
 [[
@@ -12621,8 +12241,6 @@ Accepted
 Wrong Answer
 ## 最后忠告
 刚才忘记说了，还有可能是动名词做主语之类的。
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[337]=
 [[
@@ -12670,8 +12288,6 @@ desk
 apple
 ## 样例输出
 苹果
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[339]=
 [[
@@ -12734,8 +12350,6 @@ content[341]=
     
     333333333333333333333333333333333
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[342]=
 [[
@@ -12790,8 +12404,6 @@ content[343]=
 ### Sample Output
     
     7
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[344]=
 [[
@@ -12902,8 +12514,6 @@ Talus作为一名助教，已经很久很久没刷过题了，面对你们这些
     2
 ### Hint
 数据量给的很小很小，所以建议大家试试最近学的搜索算法
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[347]=
 [[
@@ -12937,8 +12547,6 @@ E8%8E%B7.JPG)
     Case #2:
     6.00
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[348]=
 [[
@@ -12973,8 +12581,6 @@ content[348]=
     5
 ### Hint
 要求使用链表实现，用数组实现的不计过题数
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[349]=
 [[
@@ -13058,8 +12664,6 @@ void DestroyList(..)
 ...
 int main()
 {...在主函数中直接调用以上函数...}
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[351]=
 [[
@@ -13109,8 +12713,6 @@ content[352]=
     There are mostly 3 consecutive 1 in 7's binary representation
     There are mostly 3 consecutive 0 in 8's binary representation
     There are mostly 1 consecutive 1 in 8's binary representation
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[353]=
 [[
@@ -13138,8 +12740,6 @@ hus不想死，他还年轻，还有很多事情要做。于是他打算做最�
     4
 ### Warning
 请用链表实现，我们会检查代码。
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[354]=
 [[
@@ -13167,8 +12767,6 @@ Josephus上次没有成功逃脱——放心，不是因为你没有给他指出
     5
 ### Warning
 请用链表实现。
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[355]=
 [[
@@ -13257,8 +12855,6 @@ number -1.
     -1
 ### Hint
 From Codeforces Round #175
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[357]=
 [[
@@ -13343,8 +12939,6 @@ content[358]=
     
 ### Warning
 请用栈实现。
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[359]=
 [[
@@ -13374,8 +12968,6 @@ content[359]=
     
 ### Warning
 请用栈实现。
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[360]=
 [[
@@ -13966,8 +13558,6 @@ S2。所有字符串都只包括“0”到“9”的字符。
     Case #1: 2
     Case #2: 1
     Case #3: 1
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[376]=
 [[
@@ -13991,8 +13581,6 @@ content[376]=
     a
     abc
     
-College of Software, Beihang University
-@ 2011-2012, Li Zixing, all rights reserved.
 ]]
 content[377]=
 [[

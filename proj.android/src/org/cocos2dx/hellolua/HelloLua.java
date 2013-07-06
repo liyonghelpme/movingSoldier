@@ -126,6 +126,7 @@ public class HelloLua extends Cocos2dxActivity{
 		
 	}
 	private void setUpAds() {
+		
 		layout = new LinearLayout(this);
 		layout.setOrientation(LinearLayout.HORIZONTAL);
 		addContentView(layout, new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));

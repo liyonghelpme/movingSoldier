@@ -43,7 +43,7 @@ local function main()
     local chapters = {}
     local maxPageNum = #content+1
 
-    local adHeight = 32
+    local adHeight = 100
 
     local function createChapter(id)
         local layer = CCLayer:create()
