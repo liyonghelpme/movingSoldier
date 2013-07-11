@@ -46,11 +46,11 @@ function World:ctor()
     math.randomseed(0)
     for i =1, 4, 1 do
         local s
-        if i == 1 then
+        --if i == 1 then
             s = Soldier.new(self, SoldierKind.DYNAMIC)
-        else
-            s = Soldier.new(self, SoldierKind.STATIC)
-        end
+        --else
+        --    s = Soldier.new(self, SoldierKind.STATIC)
+        --end
         self.bg:addChild(s.bg)
     end
 end

@@ -28,6 +28,7 @@ function Soldier:ctor(world, kind)
     self.maxForce = 5.4
     self.avoidForce = 350
     self.kind = kind
+    self.slowRadius = 100
 
     --v/frame
     self.maxVelocity = 3
@@ -182,10 +183,16 @@ end
 function Soldier:seek()
     local px, py = self.bg:getPosition()
     local dir = {self.target[1]-px, self.target[2]-py}
+    local dist = magnitude(dir)
+
     dir = normalize(dir)
-    --100px / s
-    dir[1] = dir[1]*self.maxVelocity
-    dir[2] = dir[2]*self.maxVelocity
+    if dist < self.slowRadius then
+        dir[1] = dir[1]*self.maxVelocity*(dist/self.slowRadius)
+        dir[2] = dir[2]*self.maxVelocity*(dist/self.slowRadius)
+    else
+        dir[1] = dir[1]*self.maxVelocity
+        dir[2] = dir[2]*self.maxVelocity
+    end
     --跟帧率相关的 steering 如果排除时间因素的话
     local steering = {dir[1]-self.velocity[1], dir[2]-self.velocity[2]}
     return steering
