@@ -20,3 +20,6 @@ function distance2(a, b)
     local dx, dy = a[1]-b[1], a[2]-b[2]
     return dx*dx+dy*dy
 end
+function scaleBy(v, s)
+    return {v[1]*s, v[2]*s}
+end

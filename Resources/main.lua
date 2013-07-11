@@ -33,6 +33,7 @@ local function main()
     collectgarbage("setstepmul", 5000)
 
     ---------------
+    require "data"
     require "Class"
     require "util"
     require "Soldier"

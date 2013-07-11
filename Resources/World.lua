@@ -1,6 +1,8 @@
 require "Soldier"
 World = class()
 function World:registerUpdate()
+    local function onTouchBegan()
+    end
     local function onEnterOrExit(tag)
         if tag == "enter" then
             local function updateState(diff)
@@ -12,11 +14,20 @@ function World:registerUpdate()
         end
     end
     self.bg:registerScriptHandler(onEnterOrExit)
+
+    local function onTouch(eventType, x, y)
+        if eventType == "began" then
+            self.targetPoint = {x, y}
+        end
+    end
+    self.bg:registerScriptTouchHandler(onTouch)
+    self.bg:setTouchEnabled(true)
 end
 
 function World:update(diff)
     --self:debugShow()
 end
+
 function World:ctor()
     self.bg = CCLayer:create()
     self.grid = {}
@@ -24,6 +35,7 @@ function World:ctor()
     self.tileSize = {40, 40}
     self.coff = 1000
     self:registerUpdate()
+    self.targetPoint = nil
 
     for y = 0, self.mapSize[2]-1, 1 do
         for x = 0, self.mapSize[1]-1, 1 do
@@ -32,9 +44,14 @@ function World:ctor()
         end
     end
     math.randomseed(0)
-    for i =1, 1, 1 do
-         local s = Soldier.new(self)
-         self.bg:addChild(s.bg)
+    for i =1, 4, 1 do
+        local s
+        if i == 1 then
+            s = Soldier.new(self, SoldierKind.DYNAMIC)
+        else
+            s = Soldier.new(self, SoldierKind.STATIC)
+        end
+        self.bg:addChild(s.bg)
     end
 end
 function World:setGrid(x, y, obj)

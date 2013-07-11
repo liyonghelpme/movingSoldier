@@ -13,7 +13,7 @@ function Soldier:registerUpdate()
     end
     self.bg:registerScriptHandler(onEnterOrExit)
 end
-function Soldier:ctor(world)
+function Soldier:ctor(world, kind)
     self.world = world
     self.target = nil
     self.attacker = nil
@@ -25,7 +25,10 @@ function Soldier:ctor(world)
     self.steering = {0, 0}
     self.ahead = {0, 0}
     self.mass = 20
-    self.maxForce = 0.4
+    self.maxForce = 5.4
+    self.avoidForce = 350
+    self.kind = kind
+
     --v/frame
     self.maxVelocity = 3
 
@@ -44,9 +47,11 @@ function Soldier:update(diff)
         self.target = self:findTarget()
         self.state = 1
     elseif self.state == 1 then
-        self:doMove(diff)
-        self:clearGrids()
-        self:setGrids()
+        if self.kind == SoldierKind.DYNAMIC then
+            self:doMove(diff)
+            self:clearGrids()
+            self:setGrids()
+        end
         self:debugShow()
     end
 end
@@ -91,23 +96,9 @@ end
 
 function Soldier:collisionAvoid()
     local px, py = self.bg:getPosition()
-
     --获取小球 附近可能碰撞体影响范围 -60 + 60
     local probeDist = 100
-
     local mapSize = self.world.mapSize
-    --[[
-    local bound = self:getBoundBox()
-    bound.origin.x = bound.origin.x - 40
-    bound.origin.y = bound.origin.y - 40
-    bound.size.width = bound.size.width+80
-    bound.size.height = bound.size.height+80
-
-    local leftTile = math.floor(bound:getMinX()/40)
-    local rightTile = math.ceil(bound:getMaxX()/40)-1
-    local topTile = math.ceil(bound:getMaxY()/40)-1
-    local bottomTile = math.floor(bound:getMinY()/40)
-    --]]
     
     local leftTile = math.floor((px-probeDist)/40)
     local rightTile = math.ceil((px+probeDist)/40)-1
@@ -126,9 +117,13 @@ function Soldier:collisionAvoid()
     local minTarget = nil
 
     local vd = normalize(self.velocity)
-    local ahead = {px+vd[1]*probeDist, py+vd[2]*probeDist}
-    local ahead2 = {px+vd[1]*probeDist/2, py+vd[2]*probeDist/2}
-    local radius2 = 20*20
+    local sca = magnitude(self.velocity)/self.maxVelocity
+    local ahead = {px+vd[1]*probeDist*sca, py+vd[2]*probeDist*sca}
+    local ahead2 = {px+vd[1]*probeDist/2*sca, py+vd[2]*probeDist/2*sca}
+    
+    --我的半径 + 对方的半径
+    local radius2 = 40*40
+    local twoBallRadius2 = 40*40
     local myCenter = {px, py}
     --print("avoidance", leftTile, rightTile, bottomTile, topTile)
     --print("ahead", simple:encode(ahead), simple:encode(ahead2))
@@ -148,7 +143,7 @@ function Soldier:collisionAvoid()
                     local dist2 = distance2(ahead2, center)
                     local dist3 = distance2(myCenter, center)
                     --print("center distance", cx, cy, dist1, dist2, radius2)
-                    if dist1 < radius2 or dist2 < radius2 then
+                    if dist1 < radius2 or dist2 < radius2 or dist3 < twoBallRadius2 then
                         local hdist = distance2(myCenter, center)
                         if hdist < minDistance then
                             minDistance = hdist
@@ -166,15 +161,19 @@ function Soldier:collisionAvoid()
     if minTarget ~= nil then
         --检测最近威胁的 steer力
         local mx, my = minTarget.bg:getPosition()
+        self.bg:setOpacity(128)
         avoidanceForce = {ahead[1]-mx, ahead[2]-my}
         --s 20加速度 5s 才能避让
         --30frame  1frame 200  = 6000
         --60frame  1frame 200  = 12000
         --60frame  1frame 300  = 18000 
         avoidanceForce = normalize(avoidanceForce)
-        avoidanceForce[1] = avoidanceForce[1]*12000
-        avoidanceForce[2] = avoidanceForce[2]*12000
-        print("avoidanceForce", simple:encode(avoidanceForce))
+        --avoidanceForce[1] = avoidanceForce[1]*12000
+        --avoidanceForce[2] = avoidanceForce[2]*12000
+        avoidanceForce = scaleBy(avoidanceForce, self.avoidForce)
+        --print("avoidanceForce", simple:encode(avoidanceForce))
+    else
+        self.bg:setOpacity(255)
     end
      
     return avoidanceForce
@@ -192,8 +191,10 @@ function Soldier:seek()
     return steering
 end
 function Soldier:doMove(diff)
+    if self.world.targetPoint ~= nil then
+        self.target = self.world.targetPoint
+    end
     local steering = self:seek()
-
     
     local avoidanceForce = self:collisionAvoid()
     self.avoidanceForce = avoidanceForce
@@ -203,16 +204,19 @@ function Soldier:doMove(diff)
 
     --/s 最大加速度 100  加速度 == 0 则返回0 
     steering = truncate(steering, self.maxForce)
+    steering = scaleBy(steering, 1/self.mass)
+
     self.steering = steering
 
     local vx, vy = self.velocity[1], self.velocity[2]
-    vx = vx+steering[1]*diff
-    vy = vy+steering[2]*diff
+    vx = vx+steering[1]
+    vy = vy+steering[2]
 
-    self.velocity = truncate({vx, vy}, 100)
+    local px, py = self.bg:getPosition()
+    self.velocity = truncate({vx, vy}, self.maxVelocity)
     vx = self.velocity[1]
     vy = self.velocity[2]
-    self.bg:setPosition(px+vx*diff, py+vy*diff)
+    self.bg:setPosition(px+vx, py+vy)
     --local px, py = self.bg:getPosition()
     --print("muPos", vx, vy, steering[1], steering[2], avoidanceForce[1], avoidanceForce[2])
 end
