@@ -227,20 +227,24 @@ end
 
 --调整bound的高度来确定是否可以上下攻击
 function Soldier:checkAttack()
+    if self.specialSoldier then
+        return self.specialSoldier:checkAttack()
+    else
     --[[
     local px, py = self.bg:getPosition()
     local ox, oy = self.attacker.bg:getPosition()
     return py == oy
     --]]
     --y方向尽量在一条直线上
-    local bound = self:getBoundBox()
-    bound.origin.x = bound.origin.x-self.attackRange
-    bound.origin.y = bound.origin.y+18
-    bound.size.width = bound.size.width+self.attackRange*2 
-    bound.size.height = bound.size.height-36
+        local bound = self:getBoundBox()
+        bound.origin.x = bound.origin.x-self.attackRange
+        bound.origin.y = bound.origin.y+18
+        bound.size.width = bound.size.width+self.attackRange*2 
+        bound.size.height = bound.size.height-36
 
-    local otherBound = self.attacker:getBoundBox()
-    return bound:intersectsRect(otherBound)
+        local otherBound = self.attacker:getBoundBox()
+        return bound:intersectsRect(otherBound)
+    end
 end
 --在邻居网格里面寻找攻击目标
 --寻找最近的目标

@@ -35,4 +35,10 @@ function Archer:doAttack(diff)
     local arrow = Arrow.new(self)
     self.soldier.world.bg:addChild(arrow.bg)
 end
+function Archer:checkAttack(diff)
+    local px, py = self.soldier.bg:getPosition()
+    local ox, oy = self.soldier.attacker.bg:getPosition()
+    local attackRange = self.soldier.attackRange
+    return distance2({px, py}, {ox, oy}) <= attackRange*attackRange
+end
 

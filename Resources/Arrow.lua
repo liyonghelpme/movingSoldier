@@ -1,8 +1,8 @@
 Arrow = class()
 function Arrow:ctor(archer)
     self.archer = archer
-    self.maxVelocity = 3*60
-    self.maxForce = 10.4*60
+    self.maxVelocity = 3--*60
+    self.maxForce = 10.4--*60
     self.mass = 20
 
     self.steering = {0, 0}
@@ -62,7 +62,8 @@ function Arrow:seek()
     dir[2] = dir[2]*self.maxVelocity
     --跟帧率相关的 steering 如果排除时间因素的话
     --f*dt = dv
-    local steering = {(dir[1]-self.velocity[1])*60, (dir[2]-self.velocity[2])*60}
+    --*60
+    local steering = {(dir[1]-self.velocity[1]), (dir[2]-self.velocity[2])}
     return steering
 end
 
@@ -115,14 +116,15 @@ function Arrow:update(diff)
     steering = scaleBy(steering, 1/self.mass)
     
     local vx, vy = self.velocity[1], self.velocity[2]
-    vx = vx+steering[1]*diff
-    vy = vy+steering[2]*diff
+    vx = vx+steering[1]--*diff
+    vy = vy+steering[2]--*diff
 
     local px, py = self.bg:getPosition()
     self.velocity = truncate({vx, vy}, self.maxVelocity)
     vx = self.velocity[1]
     vy = self.velocity[2]
-    self.bg:setPosition(px+vx*diff, py+vy*diff)
+    --*diff
+    self.bg:setPosition(px+vx, py+vy)
     
 
 end
