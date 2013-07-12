@@ -1,35 +1,41 @@
+require "Archer"
 local simple = require "SimpleJson"
 Soldier = class()
 function Soldier:initAnimation()
     if self.runAnimation == nil then
-        local animation
-        local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
-        
-        cache:addSpriteFramesWithFile("run.plist")
-        local frames = CCArray:create()
-        for i = 0, 9, 1 do
-            local frame = cache:spriteFrameByName("T000"..i..".png")
-            frames:addObject(frame)
-        end
-        for i = 10, 20, 1 do
-            local frame = cache:spriteFrameByName("T00"..i..".png")
-            frames:addObject(frame)
-        end
 
-        animation = CCAnimation:createWithSpriteFrames(frames, 0.05)
-        self.runAnimation = CCRepeatForever:create(CCAnimate:create(animation))
+        if self.specialSoldier ~= nil then
+            self.specialSoldier:initAnimation()
+        else
+            local animation
+            local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
+            
+            cache:addSpriteFramesWithFile("run.plist")
+            local frames = CCArray:create()
+            for i = 0, 9, 1 do
+                local frame = cache:spriteFrameByName("T000"..i..".png")
+                frames:addObject(frame)
+            end
+            for i = 10, 20, 1 do
+                local frame = cache:spriteFrameByName("T00"..i..".png")
+                frames:addObject(frame)
+            end
 
-        cache:addSpriteFramesWithFile("attack.plist")
-        local frames = CCArray:create()
-        for i = 0, 20, 2 do
-            local frame = cache:spriteFrameByName("attack"..i..".png")
-            frames:addObject(frame)
+            animation = CCAnimation:createWithSpriteFrames(frames, 0.05)
+            self.runAnimation = CCRepeatForever:create(CCAnimate:create(animation))
+
+            cache:addSpriteFramesWithFile("attack.plist")
+            local frames = CCArray:create()
+            for i = 0, 20, 2 do
+                local frame = cache:spriteFrameByName("attack"..i..".png")
+                frames:addObject(frame)
+            end
+
+            animation = CCAnimation:createWithSpriteFrames(frames, 0.05)
+            self.attackAnimation = CCRepeatForever:create(CCAnimate:create(animation))
+            self.runAnimation:retain()
+            self.attackAnimation:retain()
         end
-
-        animation = CCAnimation:createWithSpriteFrames(frames, 0.05)
-        self.attackAnimation = CCRepeatForever:create(CCAnimate:create(animation))
-        self.runAnimation:retain()
-        self.attackAnimation:retain()
     end
 end
 function Soldier:clearAnimation()
@@ -49,6 +55,12 @@ function Soldier:runAction(act)
 end
 function Soldier:clear()
     self.bloodNode:removeFromParentAndCleanup(true)
+    if self.debugNode ~= nil then
+        self.debugNode:removeFromParentAndCleanup(true)
+        self.debugNode = nil
+    end
+    self.world.redSoldiers[self] = nil
+    self.world.blueSoldiers[self] = nil
 end
 
 function Soldier:registerUpdate()
@@ -68,7 +80,7 @@ function Soldier:registerUpdate()
     end
     self.bg:registerScriptHandler(onEnterOrExit)
 end
-function Soldier:ctor(world, kind, color, initPos)
+function Soldier:ctor(world, kind, color, initPos, soldierType)
     self.world = world
     self.target = nil
     self.attacker = nil
@@ -85,14 +97,25 @@ function Soldier:ctor(world, kind, color, initPos)
     self.kind = kind
     self.slowRadius = 100
     self.color = color
+    --高度40 攻击的时候 
     self.size = {31, 40}
     self.attackRange = 10
     self.deleted = false
     self.attackTime = 0
+    self.attackPeriod = 1
     self.health = 45
+    self.attackValue = 8
+    self.soldierType = soldierType
+    
+    if self.soldierType == SoldierTypes.ARCHER then
+        self.specialSoldier = Archer.new(self)
+        self.attackRange = 60
+        self.attackPeriod = 1
+        self.attackValue = 7
+    end
     
     --v/frame
-    self.maxVelocity = 2
+    self.maxVelocity = 1.5
 
     self.bg = CCSprite:create("whiteBall.png")
     if self.color == SoldierColor.RED then
@@ -127,6 +150,8 @@ function Soldier:update(diff)
             self:doMove(diff)
             if self.attacker == nil then
                 self:findAttackTarget()
+            elseif self.attacker.deleted then
+                self.attack = nil
             else
                 local att = self:checkAttack()
                 if att then
@@ -138,7 +163,7 @@ function Soldier:update(diff)
             self:clearGrids()
             self:setGrids()
         end
-        --self:debugShow()
+        self:debugShow()
     elseif self.state == 2 then
         self:doAttack(diff)
     end
@@ -148,6 +173,7 @@ function Soldier:update(diff)
         self.deleted = true
         self:runAction(nil)
         self.bg:removeFromParentAndCleanup(true)
+
     end
 end
 function Soldier:clearGrids()
@@ -194,9 +220,18 @@ end
 
 --调整bound的高度来确定是否可以上下攻击
 function Soldier:checkAttack()
+    --[[
+    local px, py = self.bg:getPosition()
+    local ox, oy = self.attacker.bg:getPosition()
+    return py == oy
+    --]]
+    --y方向尽量在一条直线上
     local bound = self:getBoundBox()
     bound.origin.x = bound.origin.x-self.attackRange
+    bound.origin.y = bound.origin.y+18
     bound.size.width = bound.size.width+self.attackRange*2 
+    bound.size.height = bound.size.height-36
+
     local otherBound = self.attacker:getBoundBox()
     return bound:intersectsRect(otherBound)
 end
@@ -251,19 +286,59 @@ function Soldier:findAttackTarget()
     end
     if minTarget ~= nil then
         self.attacker = minTarget
+    else
+        self:simpleFindTarget()
+    end
+end
+--如果基于网格没有找到攻击目标
+--则简单遍历士兵列表寻找攻击目标
+function Soldier:simpleFindTarget()
+    local otherSoldiers
+    if self.color == SoldierColor.RED then
+        otherSoldiers = self.world.blueSoldiers
+    else
+        otherSoldiers = self.world.redSoldiers
+    end
+    local minDistance = 999999
+    local minTarget = nil
+    local px, py = self.bg:getPosition()
+    local myCenter = {px, py}
+    for k, v in pairs(otherSoldiers) do
+        local ox, oy = k.bg:getPosition()
+        local center = {ox, oy}
+        local dist = distance2(myCenter, center)
+        if dist < minDistance then
+            minDistance = dist
+            minTarget = k
+        end
+    end
+    if minTarget ~= nil then
+        self.attacker = minTarget
     end
 end
 
 function Soldier:collisionAvoid()
     local px, py = self.bg:getPosition()
     --获取小球 附近可能碰撞体影响范围 -60 + 60
+    --
+    local bound = self:getBoundBox()
+    bound.origin.x = bound.origin.x-self.attackRange
+    bound.size.width = bound.size.width+self.attackRange*2 
+
     local probeDist = 100
     local mapSize = self.world.mapSize
+
+    local leftTile = math.floor(bound:getMinX()/40)
+    local rightTile = math.ceil(bound:getMaxX()/40)-1
+    local topTile = math.ceil(bound:getMaxY()/40)-1
+    local bottomTile = math.floor(bound:getMinY()/40)
     
+    --[[
     local leftTile = math.floor((px-probeDist)/40)
     local rightTile = math.ceil((px+probeDist)/40)-1
     local topTile = math.ceil((py+probeDist)/40)-1
     local bottomTile = math.floor((py-probeDist)/40)
+    --]]
 
     leftTile = math.max(0, leftTile)
     rightTile = math.min(mapSize[1]-1, rightTile)
@@ -340,7 +415,7 @@ function Soldier:collisionAvoid()
      
     return avoidanceForce
 end
-
+--arrival
 function Soldier:seek()
     local px, py = self.bg:getPosition()
     local dir = {self.target[1]-px, self.target[2]-py}
@@ -358,11 +433,28 @@ function Soldier:seek()
     local steering = {dir[1]-self.velocity[1], dir[2]-self.velocity[2]}
     return steering
 end
+
+--因为碰撞 导致无法靠近目标
+--所以两边都挤在了一起
+function Soldier:wander()
+    local px, py = self.bg:getPosition()
+    local disx = self.target[1] - px
+    local disy = self.target[2] - py
+    if math.abs(disx) < 10 and math.abs(disy) < 10 then
+        local maxX, maxY = self.world.maxX, self.world.maxY
+        local rx, ry = math.random(maxX), math.random(maxY)
+        self.target = {rx, ry} 
+    end
+end
+
 function Soldier:doMove(diff)
-    if self.attacker ~= nil then
+    if self.attacker ~= nil and not self.attacker.deleted then
         local ax, ay = self.attacker.bg:getPosition()
         self.target = {ax, ay}
+    elseif self.attacker == nil then
+        self:wander()
     end
+
     --if self.world.targetPoint ~= nil then
     --    self.target = self.world.targetPoint
     --end
@@ -394,6 +486,7 @@ function Soldier:doMove(diff)
     elseif vx < 0 then
         self.bg:setFlipX(true)
     end
+    
     --local px, py = self.bg:getPosition()
     --print("muPos", vx, vy, steering[1], steering[2], avoidanceForce[1], avoidanceForce[2])
 end
@@ -413,9 +506,13 @@ function Soldier:doAttack(diff)
         return
     end
     self.attackTime = self.attackTime + diff
-    if self.attackTime >= 1 then
+    if self.attackTime >= self.attackPeriod then
         self.attackTime = self.attackTime - 1
-        self.attacker.health = self.attacker.health - 8
+        if self.specialSoldier ~= nil then
+            self.specialSoldier:doAttack()
+        else
+            self.attacker.health = self.attacker.health - self.attackValue
+        end
     end
 
     local px, py = self.bg:getPosition()
@@ -485,8 +582,6 @@ function Soldier:debugShow()
     self.debugNode:addChild(temp)
 
     
-
-
     for k, v in ipairs(self.avoidanceGrid) do
         local temp = CCSprite:create("whiteBoard.png")
         temp:setColor(ccc3(255, 0, 0))

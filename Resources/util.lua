@@ -1,5 +1,9 @@
+--距离差太小 则 normalize 之后 接近0
 function normalize(v)
     local len = math.sqrt(v[1]*v[1]+v[2]*v[2])
+    if len <= 0.0001 then
+        return {v[1], v[2]}
+    end
     return {v[1]/len, v[2]/len}
 end
 function magnitude(v)
@@ -8,7 +12,7 @@ function magnitude(v)
 end
 function truncate(v, maxv)
     local len = math.sqrt(v[1]*v[1]+v[2]*v[2])
-    if len == 0 then
+    if len <= 0.001 then
         return {v[1], v[2]}
     end
     local nv = math.min(len, maxv)

@@ -23,8 +23,8 @@ function World:registerUpdate()
     end
     self.bg:registerScriptHandler(onEnterOrExit)
 
-    local maxX = 3072
-    local maxY = 768
+    local maxX = self.maxX
+    local maxY = self.maxY
     local vs = CCDirector:sharedDirector():getVisibleSize()
 
     local touchBeginPoint
@@ -82,11 +82,17 @@ function World:ctor()
     b2:setAnchorPoint(ccp(0, 0))
 
     self.grid = {}
-    self.mapSize = {20, 12}
+    self.mapSize = {76, 19}
     self.tileSize = {40, 40}
+    self.maxX = self.mapSize[1]*self.tileSize[1]
+    self.maxY = self.mapSize[2]*self.tileSize[2]
+
     self.coff = 1000
     self:registerUpdate()
     self.targetPoint = nil
+
+    self.redSoldiers = {}
+    self.blueSoldiers = {}
 
     for y = 0, self.mapSize[2]-1, 1 do
         for x = 0, self.mapSize[1]-1, 1 do
@@ -103,14 +109,23 @@ function World:ctor()
     for x=1, 1, 1 do
         for y=1, 1, 1 do
             for i =1, 1, 1 do
-                for j=1, 5, 1 do
+                for j=1, 2, 1 do
                     local s
-                    s = Soldier.new(self, SoldierKind.DYNAMIC, SoldierColor.RED, {col[i]+dx*(x-1), row[j]+dy*(y-1)})
+                    s = Soldier.new(self, SoldierKind.DYNAMIC, SoldierColor.RED, {col[i]+dx*(x-1), row[j]+dy*(y-1)}, SoldierTypes.FIGHTER)
                     self.bg:addChild(s.bg)
+                    self.redSoldiers[s] = true
                 end
             end
         end
     end
+
+    s = Soldier.new(self, SoldierKind.DYNAMIC, SoldierColor.RED, {col[1], row[3]})
+    self.bg:addChild(s.bg)
+    self.redSoldiers[s] = true
+
+    s = Soldier.new(self, SoldierKind.DYNAMIC, SoldierColor.RED, {col[1], row[4]})
+    self.bg:addChild(s.bg)
+    self.redSoldiers[s] = true
 
     local row = {240, 273, 303, 334, 363}
     local col = {2350, 2386, 2422, 2458, 2496}
@@ -120,10 +135,11 @@ function World:ctor()
     for x=1, 1, 1 do
         for y=1, 1, 1 do
             for i =1, 1, 1 do
-                for j=1, 5, 1 do
+                for j=1, 4, 1 do
                     local s
-                    s = Soldier.new(self, SoldierKind.DYNAMIC, SoldierColor.BLUE, {col[i]+dx*(x-1), row[j]+dy*(y-1)})
+                    s = Soldier.new(self, SoldierKind.DYNAMIC, SoldierColor.BLUE, {col[i]+dx*(x-1), row[j]+dy*(y-1)}, SoldierTypes.ARCHER)
                     self.bg:addChild(s.bg)
+                    self.blueSoldiers[s] = true
                 end
             end
         end
