@@ -94,8 +94,8 @@ function Soldier:ctor(world, kind, color, initPos, soldierType)
     self.steering = {0, 0}
     self.ahead = {0, 0}
     self.mass = 20
-    self.maxForce = 5.4 * 60
-    self.avoidForce = 350 * 60  
+    self.maxForce = 5.4 --* 60*60
+    self.avoidForce = 350 --* 60  
     self.kind = kind
     self.slowRadius = 100
     self.color = color
@@ -108,6 +108,7 @@ function Soldier:ctor(world, kind, color, initPos, soldierType)
     self.health = 45
     self.attackValue = 8
     self.soldierType = soldierType
+    self.lastFindTime = 0
     
     if self.soldierType == SoldierTypes.ARCHER then
         self.specialSoldier = Archer.new(self)
@@ -117,7 +118,7 @@ function Soldier:ctor(world, kind, color, initPos, soldierType)
     end
     
     --v/frame
-    self.maxVelocity = 60
+    self.maxVelocity = 1 --*60
 
     self.bg = CCSprite:create("whiteBall.png")
     if self.color == SoldierColor.RED then
@@ -150,7 +151,10 @@ function Soldier:update(diff)
     elseif self.state == 1 then
         if self.kind == SoldierKind.DYNAMIC then
             self:doMove(diff)
-            if self.attacker == nil then
+            self.lastFindTime = self.lastFindTime + diff
+            --超时也重新寻找攻击目标
+            if self.attacker == nil or self.lastFindTime >= 0.1 then
+                self.lastFindTime = 0
                 self:findAttackTarget()
             elseif self.attacker.deleted then
                 self.attack = nil
@@ -160,12 +164,13 @@ function Soldier:update(diff)
                     self.attackTime = 0
                     self.state = 2
                     self:runAction(self.attackAnimation)
+                    self.velocity = {0, 0}
                 end
             end
             self:clearGrids()
             self:setGrids()
         end
-        self:debugShow()
+        --self:debugShow()
     elseif self.state == 2 then
         self:doAttack(diff)
     end
@@ -314,9 +319,13 @@ function Soldier:simpleFindTarget()
             minTarget = k
         end
     end
+
+    self.attacker = minTarget
+    --[[
     if minTarget ~= nil then
         self.attacker = minTarget
     end
+    --]]
 end
 
 function Soldier:collisionAvoid()
@@ -355,6 +364,7 @@ function Soldier:collisionAvoid()
 
     local vd = normalize(self.velocity)
     local sca = magnitude(self.velocity)/self.maxVelocity
+    --速度方向 探测长度
     local ahead = {px+vd[1]*probeDist*sca, py+vd[2]*probeDist*sca}
     local ahead2 = {px+vd[1]*probeDist/2*sca, py+vd[2]*probeDist/2*sca}
     
@@ -409,7 +419,8 @@ function Soldier:collisionAvoid()
         avoidanceForce = normalize(avoidanceForce)
         --avoidanceForce[1] = avoidanceForce[1]*12000
         --avoidanceForce[2] = avoidanceForce[2]*12000
-        avoidanceForce = scaleBy(avoidanceForce, self.avoidForce)
+        --每frame f*dt = dv   dv/dt = f
+        avoidanceForce = scaleBy(avoidanceForce, self.avoidForce) --*60)
         --print("avoidanceForce", simple:encode(avoidanceForce))
     else
         --self.bg:setOpacity(255)
@@ -433,7 +444,10 @@ function Soldier:seek()
         dir[2] = dir[2]*self.maxVelocity
     end
     --跟帧率相关的 steering 如果排除时间因素的话
-    local steering = {(dir[1]-self.velocity[1])/60, (dir[2]-self.velocity[2])/60}
+    --1frame 达到 maxVelocity m/s
+    --60frame 1s 达到60 倍的 牵引力
+    --*60
+    local steering = {(dir[1]-self.velocity[1]), (dir[2]-self.velocity[2])}
     return steering
 end
 
@@ -465,25 +479,33 @@ function Soldier:doMove(diff)
     
     local avoidanceForce = self:collisionAvoid()
     self.avoidanceForce = avoidanceForce
+
+    --print("steering", steering[1], steering[2], self.avoidanceForce[1], self.avoidanceForce[2])
+
     --调整速度向量的吸引力
     steering[1] = steering[1]+avoidanceForce[1] 
     steering[2] = steering[2]+avoidanceForce[2]
+    --print("new steering", steering[1], steering[2], self.maxForce, self.mass)
+
 
     --/s 最大加速度 100  加速度 == 0 则返回0 
     steering = truncate(steering, self.maxForce)
+    --print("truncate", steering[1], steering[2])
+
     steering = scaleBy(steering, 1/self.mass)
 
     self.steering = steering
 
     local vx, vy = self.velocity[1], self.velocity[2]
-    vx = vx+steering[1]*diff
-    vy = vy+steering[2]*diff
+    vx = vx+steering[1]--*diff
+    vy = vy+steering[2]--*diff
 
     local px, py = self.bg:getPosition()
     self.velocity = truncate({vx, vy}, self.maxVelocity)
     vx = self.velocity[1]
     vy = self.velocity[2]
-    self.bg:setPosition(px+vx*diff, py+vy*diff)
+    --*diff *diff
+    self.bg:setPosition(px+vx, py+vy)
     if vx > 0 then
         self.bg:setFlipX(false)
     elseif vx < 0 then
@@ -541,6 +563,7 @@ function Soldier:debugShow()
     self.world.bg:addChild(self.debugNode)
 
     --当前速度 最大
+    --速度红色
     local temp = CCSprite:create("line.png")
     temp:setColor(ccc3(255, 0, 0))
     self.debugNode:addChild(temp)
@@ -563,18 +586,19 @@ function Soldier:debugShow()
     temp:setColor(ccc3(0, 0, 255))
     temp:setPosition(ccp(self.target[1], self.target[2]))
 
-    --[[
+    --躲避力 绿蓝 
     temp = CCSprite:create("line.png")
     temp:setPosition(ccp(px, py))
     local angle = math.atan2(self.avoidanceForce[2], self.avoidanceForce[1])
     temp:setRotation(-angel*180/math.pi)
     temp:setAnchorPoint(ccp(0, 0.5))
-    temp:setScaleX(magnitude(self.avoidanceForce))
+    temp:setScaleX(magnitude(self.avoidanceForce)/100)
     temp:setScaleY(0.4)
     self.debugNode:addChild(temp)
-    --]]
+    temp:setColor(ccc3(0, 255, 255))
 
 
+    --总驱动力 红蓝
     temp = CCSprite:create("line.png")
     temp:setPosition(ccp(px, py))
     local angle = math.atan2(self.steering[2], self.steering[1])
@@ -582,7 +606,9 @@ function Soldier:debugShow()
     temp:setAnchorPoint(ccp(0, 0.5))
     temp:setScaleX(magnitude(self.steering)/100)
     temp:setScaleY(0.4)
+    temp:setColor(ccc3(255, 0, 255))
     self.debugNode:addChild(temp)
+    
 
     
     for k, v in ipairs(self.avoidanceGrid) do
@@ -592,6 +618,8 @@ function Soldier:debugShow()
         temp:setPosition(ccp(v[1]*40+20, v[2]*40+20))
     end
 
+    --半ahead黄色
+    --[[
     temp = CCSprite:create("line.png")
     local dax, day = self.ahead[1]-px, self.ahead[2]-py
     temp:setPosition(ccp(px, py))
@@ -602,6 +630,7 @@ function Soldier:debugShow()
     temp:setScaleY(0.4)
     temp:setColor(ccc3(255, 255, 0))
     self.debugNode:addChild(temp)
+    --]]
 
 end
 

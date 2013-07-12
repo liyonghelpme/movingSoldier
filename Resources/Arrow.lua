@@ -1,8 +1,8 @@
 Arrow = class()
 function Arrow:ctor(archer)
     self.archer = archer
-    self.maxVelocity = 3
-    self.maxForce = 10.4
+    self.maxVelocity = 3*60
+    self.maxForce = 10.4*60
     self.mass = 20
 
     self.steering = {0, 0}
@@ -32,14 +32,16 @@ function Arrow:ctor(archer)
     local ix, iy
     if dx > 0 then
         ix = px+30
-        self.velocity = {3, 0}
+        self.velocity = {dx, dy}
     elseif dx < 0 then
         ix = px-30
-        self.velocity = {-3, 0}
+        self.velocity = {dx, dy}
     else
         ix = px+30
-        self.velocity = {3, 0}
+        self.velocity = {dx, dy}
     end
+    local tv = normalize(self.velocity)
+    self.velocity = {tv[1]*self.maxVelocity, tv[2]*self.maxVelocity}
 
     self.bg:setPosition(ix, py)
     self.bg:setFlipX(flipx)
@@ -59,11 +61,9 @@ function Arrow:seek()
     dir[1] = dir[1]*self.maxVelocity
     dir[2] = dir[2]*self.maxVelocity
     --跟帧率相关的 steering 如果排除时间因素的话
-    local steering = {dir[1]-self.velocity[1], dir[2]-self.velocity[2]}
+    --f*dt = dv
+    local steering = {(dir[1]-self.velocity[1])*60, (dir[2]-self.velocity[2])*60}
     return steering
-end
-
-function Arrow:registerUpdate()
 end
 
 
@@ -73,7 +73,7 @@ function Arrow:registerUpdate()
         --print("Arrow onenter", tag)
         if tag == "enter" then
             local function updateState(diff)
-            print("update")
+                --print("update")
                 self:update(diff)
             end
 
@@ -100,6 +100,9 @@ function Arrow:update(diff)
         return
     end
 
+    local angel = math.atan2(dify, difx)
+    self.bg:setRotation(-angel*180/math.pi)
+
     if difx > 0 then
         self.bg:setFlipX(false)
     elseif difx < 0 then
@@ -112,13 +115,14 @@ function Arrow:update(diff)
     steering = scaleBy(steering, 1/self.mass)
     
     local vx, vy = self.velocity[1], self.velocity[2]
-    vx = vx+steering[1]
-    vy = vy+steering[2]
+    vx = vx+steering[1]*diff
+    vy = vy+steering[2]*diff
 
     local px, py = self.bg:getPosition()
     self.velocity = truncate({vx, vy}, self.maxVelocity)
     vx = self.velocity[1]
     vy = self.velocity[2]
-    self.bg:setPosition(px+vx, py+vy)
+    self.bg:setPosition(px+vx*diff, py+vy*diff)
     
+
 end
