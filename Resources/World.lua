@@ -108,8 +108,8 @@ function World:ctor()
     local dy = 417-237
     for x=1, 1, 1 do
         for y=1, 1, 1 do
-            for i =1, 1, 1 do
-                for j=1, 2, 1 do
+            for i =1, 3, 1 do
+                for j=1, 5, 1 do
                     local s
                     s = Soldier.new(self, SoldierKind.DYNAMIC, SoldierColor.RED, {col[i]+dx*(x-1), row[j]+dy*(y-1)}, SoldierTypes.FIGHTER)
                     self.bg:addChild(s.bg)
@@ -119,22 +119,16 @@ function World:ctor()
         end
     end
 
-    s = Soldier.new(self, SoldierKind.DYNAMIC, SoldierColor.RED, {col[1], row[3]})
-    self.bg:addChild(s.bg)
-    self.redSoldiers[s] = true
-
-    s = Soldier.new(self, SoldierKind.DYNAMIC, SoldierColor.RED, {col[1], row[4]})
-    self.bg:addChild(s.bg)
-    self.redSoldiers[s] = true
 
     local row = {240, 273, 303, 334, 363}
-    local col = {2350, 2386, 2422, 2458, 2496}
+    local col = {780, 810, 840, 870, 900}
+    --local col = {2350, 2386, 2422, 2458, 2496}
     local dx = 2572-2350
     local dy = 417-237
 
     for x=1, 1, 1 do
         for y=1, 1, 1 do
-            for i =1, 1, 1 do
+            for i =1, 3, 1 do
                 for j=1, 4, 1 do
                     local s
                     s = Soldier.new(self, SoldierKind.DYNAMIC, SoldierColor.BLUE, {col[i]+dx*(x-1), row[j]+dy*(y-1)}, SoldierTypes.ARCHER)

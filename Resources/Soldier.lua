@@ -39,6 +39,7 @@ function Soldier:initAnimation()
     end
 end
 function Soldier:clearAnimation()
+    print("clear animation")
     self.runAnimation:release()
     self.attackAnimation:release()
     self.runAnimation = nil
@@ -54,6 +55,7 @@ function Soldier:runAction(act)
     end
 end
 function Soldier:clear()
+    print("clear normal")
     self.bloodNode:removeFromParentAndCleanup(true)
     if self.debugNode ~= nil then
         self.debugNode:removeFromParentAndCleanup(true)
@@ -92,8 +94,8 @@ function Soldier:ctor(world, kind, color, initPos, soldierType)
     self.steering = {0, 0}
     self.ahead = {0, 0}
     self.mass = 20
-    self.maxForce = 5.4
-    self.avoidForce = 350
+    self.maxForce = 5.4 * 60
+    self.avoidForce = 350 * 60  
     self.kind = kind
     self.slowRadius = 100
     self.color = color
@@ -109,13 +111,13 @@ function Soldier:ctor(world, kind, color, initPos, soldierType)
     
     if self.soldierType == SoldierTypes.ARCHER then
         self.specialSoldier = Archer.new(self)
-        self.attackRange = 60
+        self.attackRange = 200
         self.attackPeriod = 1
         self.attackValue = 7
     end
     
     --v/frame
-    self.maxVelocity = 1.5
+    self.maxVelocity = 60
 
     self.bg = CCSprite:create("whiteBall.png")
     if self.color == SoldierColor.RED then
@@ -422,6 +424,7 @@ function Soldier:seek()
     local dist = magnitude(dir)
 
     dir = normalize(dir)
+    --1frame 为这个速度变化量的 1/60?
     if dist < self.slowRadius then
         dir[1] = dir[1]*self.maxVelocity*(dist/self.slowRadius)
         dir[2] = dir[2]*self.maxVelocity*(dist/self.slowRadius)
@@ -430,7 +433,7 @@ function Soldier:seek()
         dir[2] = dir[2]*self.maxVelocity
     end
     --跟帧率相关的 steering 如果排除时间因素的话
-    local steering = {dir[1]-self.velocity[1], dir[2]-self.velocity[2]}
+    local steering = {(dir[1]-self.velocity[1])/60, (dir[2]-self.velocity[2])/60}
     return steering
 end
 
@@ -473,14 +476,14 @@ function Soldier:doMove(diff)
     self.steering = steering
 
     local vx, vy = self.velocity[1], self.velocity[2]
-    vx = vx+steering[1]
-    vy = vy+steering[2]
+    vx = vx+steering[1]*diff
+    vy = vy+steering[2]*diff
 
     local px, py = self.bg:getPosition()
     self.velocity = truncate({vx, vy}, self.maxVelocity)
     vx = self.velocity[1]
     vy = self.velocity[2]
-    self.bg:setPosition(px+vx, py+vy)
+    self.bg:setPosition(px+vx*diff, py+vy*diff)
     if vx > 0 then
         self.bg:setFlipX(false)
     elseif vx < 0 then

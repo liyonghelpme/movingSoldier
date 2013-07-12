@@ -33,5 +33,6 @@ function Archer:initAnimation()
 end
 function Archer:doAttack(diff)
     local arrow = Arrow.new(self)
+    self.soldier.world.bg:addChild(arrow.bg)
 end
 
