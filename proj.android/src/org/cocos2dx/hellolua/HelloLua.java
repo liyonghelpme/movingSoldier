@@ -69,8 +69,8 @@ public class HelloLua extends Cocos2dxActivity{
 		super.onCreate(savedInstanceState);
 		myHandler = new MyHandler();
 		myHandler.setHelloLua(this);
-		setUpAds();
-		showBanner();
+		//setUpAds();
+		//showBanner();
 	}
 	private void showBanner(){
 		layout.setVisibility(View.VISIBLE);

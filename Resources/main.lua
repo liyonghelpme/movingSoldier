@@ -33,21 +33,20 @@ local function main()
     collectgarbage("setstepmul", 5000)
 
     ---------------
-    require "data"
+
     require "Class"
     require "util"
-    require "Soldier"
-    require "World"
+    require "Player"
+    require "Map"
 
     local visibleSize = CCDirector:sharedDirector():getVisibleSize()
     local origin = CCDirector:sharedDirector():getVisibleOrigin()
 
 
-    local game = World.new()
-
+    local map = Map.new()
     -- run
     local sceneGame = CCScene:create()
-    sceneGame:addChild(game.bg)
+    sceneGame:addChild(map.bg)
 
     CCDirector:sharedDirector():runWithScene(sceneGame)
 end
