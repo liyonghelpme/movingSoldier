@@ -1,4 +1,5 @@
 require "SimplePath"
+local simple = require "SimpleJson"
 
 Map = class()
 function Map:ctor()
@@ -23,7 +24,9 @@ function Map:ctor()
 
     self.player = Player.new(self)
     self.bg:addChild(self.player.bg)
-    self.player.bg:setPosition(ccp(10*16, 10*16))
+    local sxy = gridToSoldierPos(10, 10)
+    print(simple:encode(sxy))
+    self.player.bg:setPosition(ccp(sxy[1], sxy[2]))
 
     registerTouch(self)
 end

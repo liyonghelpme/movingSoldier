@@ -34,6 +34,7 @@ local function main()
 
     ---------------
 
+    require "data"
     require "Class"
     require "util"
     require "Player"

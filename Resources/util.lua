@@ -18,7 +18,14 @@ function registerUpdate(obj)
     CCDirector:sharedDirector():getScheduler():scheduleScriptFunc(update, 0, false)
 end
 function registerEnterOrExit(obj)
-    
+    local function onEnterOrExit(tag)
+        if tag == 'enter' then
+            obj:onEnter()
+        elseif tag == 'exit' then
+            obj:onExit()
+        end
+    end
+    obj.bg:registerScriptHandler(onEnterOrExit)
 end
 
 function round(x)
@@ -53,4 +60,23 @@ function getSign(v)
     else
         return 0
     end
+end
+function runAction(obj, act)
+    if obj.curAction ~= act then
+        if obj.curAction ~= nil then
+            obj.bg:stopAction(obj.curAction)
+        end
+
+        obj.curAction = act
+        if act ~= nil then
+            obj.bg:runAction(act)
+        end
+    end
+end
+
+function gridToSoldierPos(x, y)
+    return {x*16+8, y*16+8}
+end
+function soldierPosToGrid(x, y)
+    return getGrid(x-8, y-8)
 end
