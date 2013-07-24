@@ -49,8 +49,11 @@ end
 function Tile:showSelectBox()
     if self.selectBox == nil then
         self.selectBox = CCSprite:create("images/selectBox.png")
+        self.game:showSelectBox(self, self.selectBox)
+        --[[
         self.selectBox:setPosition(ccp(33, 44))
         self.pic:addChild(self.selectBox)
+        --]]
         --self.game:selectTile(self)
     end
 end
@@ -61,8 +64,11 @@ function Tile:onTouchBegan(x, y)
         if np.x > 0 and np.x < 66 and np.y > 0 and np.y < 66 then
             if self.selectBox == nil then
                 self.selectBox = CCSprite:create("images/selectBox.png")
+                self.game:showSelectBox(self, self.selectBox)
+                --[[
                 self.selectBox:setPosition(ccp(33, 44))
                 self.pic:addChild(self.selectBox)
+                --]]
                 self.game:selectTile(self)
             end
             return true

@@ -69,8 +69,8 @@ public class HelloLua extends Cocos2dxActivity{
 		super.onCreate(savedInstanceState);
 		myHandler = new MyHandler();
 		myHandler.setHelloLua(this);
-		//setUpAds();
-		//showBanner();
+		setUpAds();
+		showBanner();
 	}
 	private void showBanner(){
 		layout.setVisibility(View.VISIBLE);
@@ -130,7 +130,7 @@ public class HelloLua extends Cocos2dxActivity{
 		layout = new LinearLayout(this);
 		layout.setOrientation(LinearLayout.HORIZONTAL);
 		addContentView(layout, new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
-		view = new AdView(this, AdSize.BANNER, "a151d75e797b3d8");
+		view = new AdView(this, AdSize.BANNER, "a151ef863cb4e54");
 		layout.addView(view);
 	}
 	

@@ -35,9 +35,9 @@ function Game:ctor()
                 local row = j-1
                 local col = i-1
                 if (col%2) == 0 then
-                    tile.bg:setPosition(ccp(col*65+81, row*65+27))
+                    tile.bg:setPosition(ccp(col*65+81, row*65+81))
                 else
-                    tile.bg:setPosition(ccp(col*65+81, row*65+32+27))
+                    tile.bg:setPosition(ccp(col*65+81, row*65+32+81))
                 end
                 self.bg:addChild(tile.bg)
                 self.tiles[xyToKey(i, j)] = tile
@@ -45,6 +45,9 @@ function Game:ctor()
 
         end
     end
+
+    self.selLayer = CCNode:create()
+    self.bg:addChild(self.selLayer)
 
     local hud = HUD.new(self)
     self.hud = hud
@@ -66,7 +69,7 @@ function Game:update(diff)
             self.aiState = 1
         elseif self.aiState == 1 then
             self.passTime = self.passTime + diff
-            if self.passTime >= 1 then
+            if self.passTime >= 0.5 then
                 self.aiState = 2
                 self.passTime = 0
                 self.aiTile:showSelectBox()       
@@ -74,7 +77,7 @@ function Game:update(diff)
         --ai 执行选择
         elseif self.aiState == 2 then
             self.passTime = self.passTime + diff
-            if self.passTime >= 1 then
+            if self.passTime >= 0.5 then
                 self.aiState = 0
                 self.passTime = 0
                 self.inAI = false
@@ -517,3 +520,8 @@ function Game:selectTile(tile)
     self.hud:updateBlock(tile)
 end
 
+function Game:showSelectBox(tile, selBox)
+    local x, y = tile.bg:getPosition()
+    selBox:setPosition(ccp(x+33, y+44))
+    self.selLayer:addChild(selBox)    
+end

@@ -4,27 +4,32 @@ function HUD:ctor(game)
 
     self.bg = CCLayer:create()
 
+
     local visibleSize = CCDirector:sharedDirector():getVisibleSize()
+    local totalHeight = (24+28+32*12)/2
+    local topMargin = visibleSize.height/2-totalHeight
+
+
     self.up = CCSprite:create("images/uiup.png")
-    self.up:setPosition(ccp(visibleSize.width-13, visibleSize.height-4))
+    self.up:setPosition(ccp(visibleSize.width-13, visibleSize.height-topMargin))
     self.up:setAnchorPoint(ccp(1, 1))
     self.bg:addChild(self.up)
 
     for i =1, 12, 1 do
         local mid = CCSprite:create("images/uimid.png")
         mid:setAnchorPoint(ccp(1, 1))
-        mid:setPosition(ccp(visibleSize.width-13, visibleSize.height-4-28-(i-1)*32))
+        mid:setPosition(ccp(visibleSize.width-13, visibleSize.height-topMargin-28-(i-1)*32))
         self.bg:addChild(mid)
     end
 
     local down = CCSprite:create("images/uilow.png")
     down:setAnchorPoint(ccp(1, 1))
-    down:setPosition(ccp(visibleSize.width-13, visibleSize.height-4-28-(12)*32))
+    down:setPosition(ccp(visibleSize.width-13, visibleSize.height-topMargin-28-(12)*32))
     self.bg:addChild(down)
 
     self.con = CCNode:create()
     self.bg:addChild(self.con)
-    self.con:setPosition(ccp(visibleSize.width-13-180, visibleSize.height-4-28))
+    self.con:setPosition(ccp(visibleSize.width-13-180, visibleSize.height-topMargin-28))
 
     self.left = CCSprite:create("images/soldier1.png")
     self.left:setPosition(ccp(77, -69))
@@ -45,22 +50,25 @@ function HUD:ctor(game)
         end
     end
 
-    CCMenuItemFont:setFontSize(15)
-    local help = CCMenuItemFont:create("帮助")
+    CCMenuItemFont:setFontSize(30)
+    local help = CCMenuItemFont:create("查看帮助")
     help:setAnchorPoint(ccp(0.5, 0.5))
     help:setColor(ccc3(0, 0, 0))
     help:registerScriptTapHandler(onHelp)
-    help:setPosition(ccp(85, -140))
+    help:setPosition(ccp(85, -130))
 
     local menu = CCMenu:create()
     menu:addChild(help)
     menu:setPosition(ccp(0, 0))
     self.con:addChild(menu)
 
-    self.word = CCLabelTTF:create("选择一个块",  "", 15)
-    self.word:setPosition(ccp(95, -170))
-    self.con:addChild(self.word)
-    self.word:setColor(ccc3(237, 70, 48))
+    self.word = CCLabelTTF:create("选择一个块",  "", 20)
+    --self.word:setPosition(ccp(95, -170))
+    self.word:setPosition(ccp(visibleSize.width/2, visibleSize.height/2))
+    --self.con:addChild(self.word)
+    self.bg:addChild(self.word)
+    --self.word:setColor(ccc3(237, 70, 48))
+    self.word:setColor(ccc3(255, 255, 255))
 
 end
 function HUD:showAIState()
@@ -69,10 +77,16 @@ function HUD:showAIState()
         self.word:removeFromParentAndCleanup(true)
         self.word = nil
     end
-    self.word = CCLabelTTF:create("电脑正在决策",  "", 15)
-    self.word:setPosition(ccp(95, -170))
-    self.con:addChild(self.word)
-    self.word:setColor(ccc3(237, 70, 48))
+
+    local visibleSize = CCDirector:sharedDirector():getVisibleSize()
+    self.word = CCLabelTTF:create("电脑正在决策",  "", 20)
+    --self.word:setPosition(ccp(95, -170))
+    self.word:setPosition(ccp(visibleSize.width/2, visibleSize.height/2))
+    --self.con:addChild(self.word)
+    self.bg:addChild(self.word)
+    --self.word:setColor(ccc3(237, 70, 48))
+    self.word:setColor(ccc3(255, 255, 255))
+
 end
 function HUD:clearAIState()
     self.arrow:setPosition(ccp(77, -37))
@@ -80,10 +94,16 @@ function HUD:clearAIState()
         self.word:removeFromParentAndCleanup(true)
         self.word = nil
     end
-    self.word = CCLabelTTF:create("选择一个块",  "", 15)
-    self.word:setPosition(ccp(95, -170))
-    self.con:addChild(self.word)
-    self.word:setColor(ccc3(237, 70, 48))
+
+    local visibleSize = CCDirector:sharedDirector():getVisibleSize()
+    self.word = CCLabelTTF:create("选择一个块",  "", 20)
+    --self.word:setPosition(ccp(95, -170))
+    self.word:setPosition(ccp(visibleSize.width/2, visibleSize.height/2))
+    --self.con:addChild(self.word)
+    self.bg:addChild(self.word)
+    --self.word:setColor(ccc3(237, 70, 48))
+    self.word:setColor(ccc3(255, 255, 255))
+
 end
 
 function HUD:updateBlock(tile)
@@ -120,8 +140,9 @@ function HUD:updateBlock(tile)
     menu:setPosition(ccp(0, 0))
     self.con:addChild(menu)
     self.menu = menu
-    local bw = CCLabelTTF:create("OK", "Minecraftia", 15)
-    bw:setPosition(ccp(39, 40))
+    local bw = CCLabelTTF:create("确定", "Minecraftia", 30)
+    local size = self.button:getContentSize()
+    bw:setPosition(ccp(size.width/2, size.height/2))
     bw:setAnchorPoint(ccp(0.5, 0.5))
     bw:setColor(ccc3(237, 70, 48))
     self.button:addChild(bw)
@@ -146,7 +167,19 @@ function HUD:updateBlock(tile)
         end
         --附近没有可以派遣的士兵
         if myPower == 0 then
-            self.word:setString("这块地附近没有可以派遣的士兵")
+            if self.word ~= nil then
+                self.word:removeFromParentAndCleanup(true)
+                self.word = nil
+            end
+
+            local visibleSize = CCDirector:sharedDirector():getVisibleSize()
+            self.word = CCLabelTTF:create("这块地附近没有可以派遣的士兵",  "", 20)
+            --self.word:setPosition(ccp(95, -170))
+            self.word:setPosition(ccp(visibleSize.width/2, visibleSize.height/2))
+            --self.con:addChild(self.word)
+            self.bg:addChild(self.word)
+            --self.word:setColor(ccc3(237, 70, 48))
+            self.word:setColor(ccc3(255, 255, 255))
             return
         end
         --循环调度
@@ -216,39 +249,41 @@ function HUD:updateBlock(tile)
         self.word = CCLabelTTF:create("将附近士兵集中到此", "", 15)
         self.word:setPosition(ccp(95, -170))
         self.con:addChild(self.word)
-        self.word:setColor(ccc3(237, 70, 48))
+        self.word:setColor(ccc3(0, 0, 0))
     elseif tile.color == Color.BLUE then
         self.word = CCLabelTTF:create("附近士兵攻击这里", "", 15)
         self.word:setPosition(ccp(95, -170))
         self.con:addChild(self.word)
-        self.word:setColor(ccc3(237, 70, 48))
+        --self.word:setColor(ccc3(237, 70, 48))
+        self.word:setColor(ccc3(0, 0, 0))
     else
         self.word = CCLabelTTF:create("将附近士兵集中到此", "", 15)
         self.word:setPosition(ccp(95, -170))
         self.con:addChild(self.word)
-        self.word:setColor(ccc3(237, 70, 48))
+        --self.word:setColor(ccc3(237, 70, 48))
+        self.word:setColor(ccc3(0, 0, 0))
     end
 
     if tile.kind == 1 then
         self.blockState = CCSprite:create("images/grass.png")
-        self.vw = CCLabelTTF:create("草地", "", 12)
-        self.attr = CCLabelTTF:create("士兵+1", "", 12)
+        self.vw = CCLabelTTF:create("草地", "", 20)
+        self.attr = CCLabelTTF:create("士兵+1", "", 20)
     elseif tile.kind == 2 then
         self.blockState = CCSprite:create("images/village.png")
-        self.vw = CCLabelTTF:create("村庄", "", 12)
-        self.attr = CCLabelTTF:create("士兵+2", "", 12)
+        self.vw = CCLabelTTF:create("村庄", "", 20)
+        self.attr = CCLabelTTF:create("士兵+2", "", 20)
     elseif tile.kind == 3 then
         self.blockState = CCSprite:create("images/castle2.png")
-        self.vw = CCLabelTTF:create("城堡", "", 12)
-        self.attr = CCLabelTTF:create("士兵+3", "", 12)
+        self.vw = CCLabelTTF:create("城堡", "", 20)
+        self.attr = CCLabelTTF:create("士兵+3", "", 20)
     elseif tile.kind == 4 then
         self.blockState = CCSprite:create("images/mountain.png")
-        self.vw = CCLabelTTF:create("山地", "", 12)
-        self.attr = CCLabelTTF:create("士兵-1", "", 12)
+        self.vw = CCLabelTTF:create("山地", "", 20)
+        self.attr = CCLabelTTF:create("士兵-1", "", 20)
     elseif tile.kind == 5 then
         self.blockState = CCSprite:create("images/desert.png")
-        self.vw = CCLabelTTF:create("土地", "", 12)
-        self.attr = CCLabelTTF:create("士兵不变", "", 12)
+        self.vw = CCLabelTTF:create("土地", "", 20)
+        self.attr = CCLabelTTF:create("士兵不变", "", 20)
     end
     self.blockState:setTextureRect(CCRectMake(0, 0, 66, 66))
 
@@ -257,11 +292,11 @@ function HUD:updateBlock(tile)
     self.blockState:addChild(sb)
     self.blockState:setPosition(ccp(95, -295))
     self.con:addChild(self.blockState)
-    self.vw:setPosition(ccp(95, -343))
+    self.vw:setPosition(ccp(95, -350))
     self.vw:setColor(ccc3(255, 255, 255))
     self.con:addChild(self.vw)
     self.attr:setColor(ccc3(100, 57, 40))
-    self.attr:setPosition(ccp(95, -360))
+    self.attr:setPosition(ccp(95, -370))
     self.con:addChild(self.attr)
 
 end
