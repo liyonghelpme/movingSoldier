@@ -37,12 +37,55 @@ function HUD:ctor(game)
     self.arrow:setPosition(ccp(77, -37))
     self.con:addChild(self.arrow)
 
+    local function onHelp()
+        if not self.game.inHelp then
+            local help = Help.new(self.game)
+            self.game.bg:addChild(help.bg)
+            self.game.inHelp = true
+        end
+    end
+
+    CCMenuItemFont:setFontSize(15)
+    local help = CCMenuItemFont:create("帮助")
+    help:setAnchorPoint(ccp(0.5, 0.5))
+    help:setColor(ccc3(0, 0, 0))
+    help:registerScriptTapHandler(onHelp)
+    help:setPosition(ccp(85, -140))
+
+    local menu = CCMenu:create()
+    menu:addChild(help)
+    menu:setPosition(ccp(0, 0))
+    self.con:addChild(menu)
+
     self.word = CCLabelTTF:create("选择一个块",  "", 15)
-    self.word:setPosition(ccp(95, -213))
+    self.word:setPosition(ccp(95, -170))
     self.con:addChild(self.word)
     self.word:setColor(ccc3(237, 70, 48))
 
 end
+function HUD:showAIState()
+    self.arrow:setPosition(ccp(117, -37)) 
+    if self.word ~= nil then
+        self.word:removeFromParentAndCleanup(true)
+        self.word = nil
+    end
+    self.word = CCLabelTTF:create("电脑正在决策",  "", 15)
+    self.word:setPosition(ccp(95, -170))
+    self.con:addChild(self.word)
+    self.word:setColor(ccc3(237, 70, 48))
+end
+function HUD:clearAIState()
+    self.arrow:setPosition(ccp(77, -37))
+    if self.word ~= nil then
+        self.word:removeFromParentAndCleanup(true)
+        self.word = nil
+    end
+    self.word = CCLabelTTF:create("选择一个块",  "", 15)
+    self.word:setPosition(ccp(95, -170))
+    self.con:addChild(self.word)
+    self.word:setColor(ccc3(237, 70, 48))
+end
+
 function HUD:updateBlock(tile)
     if self.word ~= nil then
         self.word:removeFromParentAndCleanup(true)
@@ -94,6 +137,18 @@ function HUD:updateBlock(tile)
         else
             neibors = {{x, y-1}, {x+1, y}, {x+1, y+1}, {x, y+1}, {x-1, y+1}, {x-1, y}}
         end
+        local myPower = 0
+        for k, v in ipairs(neibors) do
+            local n = self.game.tiles[xyToKey(v[1], v[2])]
+            if n ~= nil and n.color == Color.RED then
+                myPower = myPower+n.soldier
+            end
+        end
+        --附近没有可以派遣的士兵
+        if myPower == 0 then
+            self.word:setString("这块地附近没有可以派遣的士兵")
+            return
+        end
         --循环调度
         if tile.color == Color.RED then
             for k, v in ipairs(neibors) do
@@ -105,20 +160,41 @@ function HUD:updateBlock(tile)
                 end
             end
             tile:updateSoldier(0)
+        --攻击的时候兵力全部出动
         elseif tile.color == Color.BLUE then
+            local myPower = 0
             for k, v in ipairs(neibors) do
                 local n = self.game.tiles[xyToKey(v[1], v[2])]
                 if n ~= nil and n.color == Color.RED then
                     local left = tile.soldier
-                    local mv = math.min(n.soldier, left)
+                    local mv = math.floor(n.soldier/2)
+                    --local mv = math.min(n.soldier, left)
                     n:updateSoldier(-mv)
-                    tile.soldier = tile.soldier-mv
+                    myPower = myPower + mv
+                    --[[
+                    if left > mv then
+                        tile.soldier = tile.soldier-mv
+                    else
+                        tile.soldier = 
+                    end
+                    --]]
                 end
             end
+            if tile.soldier > myPower then
+                tile.soldier = tile.soldier - myPower
+            else
+                myPower = myPower - tile.soldier
+                tile.soldier = 0
+                tile:setEmpty()
+                tile.soldier = myPower
+            end
+            tile:updateSoldier(0)
+            --[[
             tile:updateSoldier(0)
             if tile.soldier == 0 then
                 tile:setEmpty()
             end
+            --]]
         --相当于移动
         else
             for k, v in ipairs(neibors) do

@@ -41,19 +41,32 @@ function Tile:ctor(kind, color, soldier, game, x, y)
     registerTouch(self)
 end
 function Tile:clearSelect()
-    self.selectBox:removeFromParentAndCleanup(true)
-    self.selectBox = nil
+    if self.selectBox ~= nil then
+        self.selectBox:removeFromParentAndCleanup(true)
+        self.selectBox = nil
+    end
+end
+function Tile:showSelectBox()
+    if self.selectBox == nil then
+        self.selectBox = CCSprite:create("images/selectBox.png")
+        self.selectBox:setPosition(ccp(33, 44))
+        self.pic:addChild(self.selectBox)
+        --self.game:selectTile(self)
+    end
 end
 function Tile:onTouchBegan(x, y)
-    local np = self.pic:convertToNodeSpace(ccp(x, y))
-    if np.x > 0 and np.x < 66 and np.y > 0 and np.y < 66 then
-        if self.selectBox == nil then
-            self.selectBox = CCSprite:create("images/selectBox.png")
-            self.selectBox:setPosition(ccp(33, 44))
-            self.pic:addChild(self.selectBox)
-            self.game:selectTile(self)
+    --没有在AI 动画播放状态
+    if not self.game.inAI and not self.game.gameEnd then
+        local np = self.pic:convertToNodeSpace(ccp(x, y))
+        if np.x > 0 and np.x < 66 and np.y > 0 and np.y < 66 then
+            if self.selectBox == nil then
+                self.selectBox = CCSprite:create("images/selectBox.png")
+                self.selectBox:setPosition(ccp(33, 44))
+                self.pic:addChild(self.selectBox)
+                self.game:selectTile(self)
+            end
+            return true
         end
-        return true
     end
     return false
 end

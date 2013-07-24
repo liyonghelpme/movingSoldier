@@ -21,6 +21,7 @@ local function main()
     require "data"
     require "util"
     require "Class"
+    require "Help"
     require "Game"
 
 
