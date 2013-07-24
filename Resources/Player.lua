@@ -79,23 +79,7 @@ function Player:initAnimation()
     end
 end
 function Player:clearAnimation()
-    self.idle_down:release()
-    self.idle_down = nil
-
-    self.idle_right:release()
-    self.idle_right = nil
-
-    self.idle_up:release()
-    self.idle_up = nil
-
-    self.walk_down:release()
-    self.walk_down = nil
-
-    self.walk_right:release()
-    self.walk_right = nil
-
-    self.walk_up:release()
-    self.walk_up = nil
+    clearCharacterAnimation(self)
 end
 function Player:onEnter()
     self:initAnimation()
@@ -106,6 +90,7 @@ end
 
 function Player:ctor(map)
     self.map = map
+    self.picName = "clotharmor"
     self.bg = CCSprite:create("player.png") 
     self.bg:setAnchorPoint(ccp(0.5, 0.5))
     registerUpdate(self)
@@ -123,6 +108,9 @@ function Player:ctor(map)
     self.speed = 100
     registerEnterOrExit(self)
     self.oritation = Oritation.DOWN
+    self.target = nil
+    self.targetX = nil
+    self.targetY = nil
 
     self:initAnimation()
     self:idle()
@@ -145,18 +133,17 @@ function Player:move()
 end
 
 function Player:idle()
-    if self.oritation == Oritation.DOWN then
-        runAction(self, self.idle_down)
-        self.bg:setFlipX(false)
-    elseif self.oritation == Oritation.UP then
-        runAction(self, self.idle_up)
-        self.bg:setFlipX(false)
-    elseif self.oritation == Oritation.RIGHT  then
-        runAction(self, self.idle_right)
-        self.bg:setFlipX(false)
-    elseif self.oritation == Oritation.LEFT then
-        runAction(self, self.idle_right)
-        self.bg:setFlipX(true)
+    showIdle(self)
+end
+
+function Player:attack(obj, x, y)
+    self.target = obj 
+    self.targetX = x
+    self.targetY = y
+    if self.destination == nil then
+        self.destination = {x, y}
+    else
+        self.nextDestination = {x, y}
     end
 end
 
@@ -214,6 +201,16 @@ end
 
 function Player:moveStep(diff)
     local x, y = self.bg:getPosition()
+    if self.target ~= nil then
+        local nextGrid = self.path[self.nextStep]
+        if nextGrid[1] == self.targetX and nextGrid[2] == self.targetY then
+            self.destination = nil
+            self.path = nil
+            self.destination = nil
+            return
+        end
+    end
+
     if math.abs(self.nextPosx-x) < 1 and math.abs(self.nextPosy-y) < 1 then
         if self.nextDestination ~= nil then
             self.destination = self.nextDestination

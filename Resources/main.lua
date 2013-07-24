@@ -10,22 +10,6 @@ function __G__TRACKBACK__(msg)
     cclog(debug.traceback())
     cclog("----------------------------------------")
 end
-local function round(x)
-    local t
-    if x >= 0.0 then
-        t = math.ceil(x)
-        if t-x > 0.50000000001 then
-            t = t - 1
-        end
-    else
-        t = math.ceil(-x)
-        if t+x > 0.50000000001 then
-            t = t - 1
-        end
-        t = -t
-    end
-    return t
-end
 
 local function main()
     -- avoid memory leak
@@ -35,19 +19,19 @@ local function main()
     ---------------
 
     require "data"
-    require "Class"
     require "util"
-    require "Player"
-    require "Map"
+    require "Class"
+    require "Game"
+
 
     local visibleSize = CCDirector:sharedDirector():getVisibleSize()
     local origin = CCDirector:sharedDirector():getVisibleOrigin()
 
 
-    local map = Map.new()
+    local game = Game.new()
     -- run
     local sceneGame = CCScene:create()
-    sceneGame:addChild(map.bg)
+    sceneGame:addChild(game.bg)
 
     CCDirector:sharedDirector():runWithScene(sceneGame)
 end

@@ -1,3 +1,4 @@
+require "Monster"
 require "SimplePath"
 local simple = require "SimpleJson"
 
@@ -29,6 +30,17 @@ function Map:ctor()
     self.player.bg:setPosition(ccp(sxy[1], sxy[2]))
 
     registerTouch(self)
+
+    --记录某些特殊网格状态存在怪兽之类
+    self.grids = {}
+
+    self.monster =  Monster.new(self)
+    self.bg:addChild(self.monster.bg)
+    local sxy = gridToSoldierPos(15, 15)
+    self.monster.bg:setPosition(ccp(sxy[1], sxy[2]))
+    self.monster:initPosition()
+
+
 end
 
 function Map:onTouchBegan(x, y)
@@ -40,5 +52,11 @@ end
 
 function Map:onTouchEnded(x, y)
     local np = self.bg:convertToNodeSpace(ccp(x, y))
-    self.player:goto(np)
+    local grid = getGrid(np.x, np.y)
+    local key = xyToKey(grid[1], grid[2])
+    if self.grids[key] then
+        self.player:attack(self.grids[key], grid[1], grid[2])
+    else
+        self.player:goto(np)
+    end
 end

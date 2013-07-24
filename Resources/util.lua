@@ -80,3 +80,11 @@ end
 function soldierPosToGrid(x, y)
     return getGrid(x-8, y-8)
 end
+
+
+function xyToKey(x, y)
+    return x*100000+y
+end
+function keyToXY(key)
+    return math.floor(key/100000), math.floor(key%100000)
+end
